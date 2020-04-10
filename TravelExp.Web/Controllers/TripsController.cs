@@ -18,7 +18,30 @@ namespace TravelExp.Web.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View();
+            return View(
+                await _context.Users.Include(u => u.Trips)
+                .ToListAsync());
+        }
+
+        public async Task<IActionResult> Details(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var employee = await _context.Users.Include(u => u.Trips)
+                .ThenInclude(t => t.TripDetails)
+                .Include(u => u.Trips)
+                .ThenInclude(t => t.City)
+                .ThenInclude(c => c.Country)
+                .FirstOrDefaultAsync(u => u.Id.Equals(id));
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            return View(employee);
         }
     }
 }
