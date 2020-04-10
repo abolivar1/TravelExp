@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelExp.Common", "TravelExp.Common\TravelExp.Common.csproj", "{1CDDB5A4-382E-418E-A4ED-B3D9F8B028C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelExp.Web", "TravelExp.Web\TravelExp.Web.csproj", "{64B5C610-C663-494B-8559-6EB653CDB903}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CDDB5A4-382E-418E-A4ED-B3D9F8B028C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CDDB5A4-382E-418E-A4ED-B3D9F8B028C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CDDB5A4-382E-418E-A4ED-B3D9F8B028C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CDDB5A4-382E-418E-A4ED-B3D9F8B028C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64B5C610-C663-494B-8559-6EB653CDB903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64B5C610-C663-494B-8559-6EB653CDB903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64B5C610-C663-494B-8559-6EB653CDB903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64B5C610-C663-494B-8559-6EB653CDB903}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1BCC82A6-B48E-4DC0-B94A-AF53C41015BA}
+	EndGlobalSection
+EndGlobal
