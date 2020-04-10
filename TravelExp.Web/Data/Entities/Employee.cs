@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TravelExp.Common.Enums;
 
@@ -29,6 +30,8 @@ namespace TravelExp.Web.Data.Entities
 
         [Display(Name = "User Type")]
         public UserType UserType { get; set; }
+
+        public ICollection<Trip> Trips { get; set; }
 
         public string FullName => $"{FirstName} {LastName}";
 
