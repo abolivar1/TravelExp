@@ -33,7 +33,7 @@ namespace TravelExp.Web.Data.Entities
 
         public ICollection<Trip> Trips { get; set; }
 
-        [Display(Name = "Last Name")]
+        [Display(Name = "Name")]
         public string FullName => $"{FirstName} {LastName}";
 
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";

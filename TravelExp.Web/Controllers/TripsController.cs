@@ -43,5 +43,26 @@ namespace TravelExp.Web.Controllers
 
             return View(employee);
         }
+
+        public async Task<IActionResult> TripDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var trip = await _context.Trips.Include(u => u.TripDetails)
+                .ThenInclude(t => t.ExpenseType)
+                .Include(u => u.City)
+                .ThenInclude(c => c.Country)
+                .Include(t => t.Employee)
+                .FirstOrDefaultAsync(u => u.Id == id);
+            if (trip == null)
+            {
+                return NotFound();
+            }
+
+            return View(trip);
+        }
     }
 }

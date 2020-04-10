@@ -1,0 +1,122 @@
+﻿@model TravelExp.Web.Data.Entities.Trip
+
+@{
+    ViewData["Title"] = "TripDetails";
+}
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+<h2>TripDetails</h2>
+<div>
+    <a asp-action="Details" asp-route-id="@Model.Employee.Id" class="btn btn-success">Back to List</a>
+</div>
+<div class="col-md-4">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDateLocal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDateLocal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDateLocal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndDateLocal)
+        </dd>
+        <dt>
+            Employee's Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.FullName)
+        </dd>
+    </dl>
+</div>
+<hr />
+<div class="col-md-4">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.City.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City.Country.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City.Country.Name)
+        </dd>
+        <dt>
+            # Details
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TripDetails.Count)
+        </dd>
+    </dl>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Trip Details</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-responsive table-striped" id="MyTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                Info
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.TripDetails)
+                        {
+                            <tr>
+                                <td align="center">
+                                    <p>
+
+                                        <h3><b>Expense Type: </b>@Html.DisplayFor(modelItem => item.ExpenseType.Name)</h3><br />
+                                        <b>Date: </b>@Html.DisplayFor(modelItem => item.DateLocal)<br />
+                                        <b>Amount: </b>@Html.DisplayFor(modelItem => item.Amount)<br />
+                                        <b>Description: </b>@Html.DisplayFor(modelItem => item.Description)<br />
+                                        @if (!string.IsNullOrEmpty(item.PicturePath))
+                                        {
+                                            <img src="@Url.Content(item.PicturePath)" alt="Image" style="width:600px;height:600px;max-width: 100%; height: auto;" />
+                                        }
+                                    </p>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_DeleteDialog" />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MyTable').DataTable();
+
+            // Delete item
+            var item_to_delete;
+
+            $('.deleteItem').click((e) => {
+                item_to_delete = e.currentTarget.dataset.id;
+            });
+
+            $("#btnYesDelete").click(function () {
+                window.location.href = '/Teams/DeleteGroup/' + item_to_delete;
+            });
+        });
+    </script>
+}
