@@ -32,6 +32,7 @@ namespace TravelExp.Prism
             containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<TripsPage, TripsPageViewModel>();
+            containerRegistry.RegisterForNavigation<TripDetailsPage, TripDetailsPageViewModel>();
         }
     }
 }

@@ -4,47 +4,51 @@
              xmlns:prism="http://prismlibrary.com"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="TravelExp.Prism.Views.TripsPage"
+             x:Class="TravelExp.Prism.Views.TripDetailsPage"
              Title="{Binding Title}">
     <StackLayout Padding="5">
-        <CollectionView ItemsSource="{Binding Trips}">
+        <CollectionView ItemsSource="{Binding TripDetails}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"/>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame CornerRadius="25"
+                    <Frame 
+                        CornerRadius="30"
                         HasShadow="True"
                         Margin="0,0,0,5">
                         <Grid>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding SelectTripCommand}"/>
-                            </Grid.GestureRecognizers>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <StackLayout Grid.Column="0"
                                      VerticalOptions="Center">
-                                <Label Text="{Binding City.Name}" 
+                                <Label Text="{Binding ExpenseType.Name}" 
                                    FontAttributes="Bold"
                                    FontSize="Medium"
                                    LineBreakMode="TailTruncation" />
-                                <Label Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                <Label Text="{Binding DateLocal, StringFormat='{0:dd/MM/yyyy hh:mm tt}'}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="Italic" 
                                    VerticalOptions="End" />
-                                <Label Text="{Binding EndDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                <Label Text="{Binding Description}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="Italic" 
                                    VerticalOptions="End" />
-                                <Label Text="{Binding TotalAmount, StringFormat='{0:C2}'}" 
+                                <Label Text="{Binding Amount, StringFormat='{0:C2}'}" 
                                    FontAttributes="Bold"
                                    FontSize="Medium"
                                    LineBreakMode="TailTruncation" />
+                                <ffimageloading:CachedImage Aspect="AspectFill"
+                                                    Source="{Binding LogoFullPath}" 
+                                                    CacheDuration= "50"
+                                                    Margin="5"
+                                                    RetryCount= "3"
+                                                    RetryDelay= "600"
+                                                    WidthRequest="500"
+                                                    HeightRequest="500"/>
+
                             </StackLayout>
-                            <Image Grid.Column="1" 
-                               Source="ic_more_vert"/>
                         </Grid>
                     </Frame>
                 </DataTemplate>

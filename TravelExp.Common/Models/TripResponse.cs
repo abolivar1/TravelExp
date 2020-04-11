@@ -20,7 +20,7 @@ namespace TravelExp.Common.Models
 
         public CityResponse City { get; set; }
 
-        public ICollection<TripDetailResponse> TripDetails { get; set; }
+        public List<TripDetailResponse> TripDetails { get; set; }
 
         public decimal TotalAmount { get; set; }
 

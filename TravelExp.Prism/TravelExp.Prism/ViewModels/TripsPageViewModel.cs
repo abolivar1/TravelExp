@@ -11,25 +11,27 @@ namespace TravelExp.Prism.ViewModels
 {
     public class TripsPageViewModel : ViewModelBase
     {
+        private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
-        private List<TripResponse> _trips;
+        private List<TripItemViewModel> _trips;
 
         public TripsPageViewModel(
             INavigationService navigationService,
             IApiService apiService) : base(navigationService)
         {
+            _navigationService = navigationService;
             _apiService = apiService;
             Title = "Trips";
-            LoadTournamentsAsync();
+            LoadTripsAsync();
         }
 
-        public List<TripResponse> Trips
+        public List<TripItemViewModel> Trips
         {
             get => _trips;
             set => SetProperty(ref _trips, value);
         }
 
-        private async void LoadTournamentsAsync()
+        private async void LoadTripsAsync()
         {
             string url = App.Current.Resources["UrlAPI"].ToString();
             Response response = await _apiService.GetListAsync<TripResponse>(
@@ -46,7 +48,18 @@ namespace TravelExp.Prism.ViewModels
                 return;
             }
 
-            Trips = (List<TripResponse>)response.Result;
+            List<TripResponse> list = (List<TripResponse>)response.Result;
+            Trips = list.Select(t => new TripItemViewModel(_navigationService)
+            {
+                EndDate = t.EndDate,
+                TripDetails = t.TripDetails,
+                Id = t.Id,
+                Employee = t.Employee,
+                City = t.City,
+                TotalAmount = t.TotalAmount,
+                StartDate = t.StartDate
+            }).ToList();
+
         }
     }
 
