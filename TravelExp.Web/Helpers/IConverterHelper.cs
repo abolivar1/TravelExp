@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TravelExp.Web.Data.Entities;
 using TravelExp.Web.Models;
+using TravelExp.Common.Models;
 
 namespace TravelExp.Web.Helpers
 {
@@ -12,5 +13,10 @@ namespace TravelExp.Web.Helpers
         Task<City> ToCityAsync(CityViewModel model, bool isNew);
 
         CityViewModel ToCityViewModel(City city);
+
+        TripResponse ToTripResponse(Trip tripEntity);
+
+        List<TripResponse> ToTripResponse(List<Trip> tripEntities);
+
     }
 }
