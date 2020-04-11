@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TravelExp.Web.Data;
 
 namespace TravelExp.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TripsController : Controller
     {
         private readonly DataContext _context;

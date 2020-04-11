@@ -13,7 +13,7 @@ namespace TravelExp.Web.Models
         public string Username { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory")]
-        [MinLength(11, ErrorMessage = "The field {0} can not be less than {1} characteres")]
+        [MinLength(6, ErrorMessage = "The field {0} can not be less than {1} characteres")]
         public string Password { get; set; }
 
         public bool RememberMe { get; set; }
