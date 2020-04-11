@@ -32,8 +32,9 @@ namespace TravelExp.Web.Data.Entities
 
         public ICollection<TripDetail> TripDetails { get; set; }
 
-        //TO DO: Change this definition
         [Display(Name = "Total Amount")]
-        public DateTime TotalAmount;
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
+        public decimal TotalAmount { get; set; }
     }
 }

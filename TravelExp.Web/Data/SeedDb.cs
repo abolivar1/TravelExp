@@ -152,6 +152,7 @@ namespace TravelExp.Web.Data
                     EndDate = endDate,
                     Employee = _context.Users.FirstOrDefault(u => u.FirstName.Equals("Miguel")),
                     City = _context.Cities.FirstOrDefault(c => c.Name.Equals("Bogota")),
+                    TotalAmount = 60000,
                     TripDetails = new List<TripDetail>
                     {
                         new TripDetail
@@ -183,6 +184,7 @@ namespace TravelExp.Web.Data
                     EndDate = endDate,
                     Employee = _context.Users.FirstOrDefault(u => u.FirstName.Equals("Miguel")),
                     City = _context.Cities.FirstOrDefault(c => c.Name.Equals("Miami")),
+                    TotalAmount = 530000,
                     TripDetails = new List<TripDetail>
                     {
                         new TripDetail

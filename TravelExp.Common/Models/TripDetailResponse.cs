@@ -18,6 +18,10 @@ namespace TravelExp.Common.Models
 
         public string PicturePath { get; set; }
 
+        public string LogoFullPath => string.IsNullOrEmpty(PicturePath)
+    ? "https://travelexpalex.azurewebsites.net//images/noimage.png"
+    : $"https://travelexpalex.azurewebsites.net{PicturePath.Substring(1)}";
+
         public TripResponse Trip { get; set; }
 
         public ExpenseTypeResponse ExpenseType { get; set; }

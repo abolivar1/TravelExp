@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="TravelExp.Prism.Views.TripsPage"
+             Title="{Binding Title}">
+    <StackLayout Padding="5">
+        <CollectionView ItemsSource="{Binding Trips}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0"
+                                     VerticalOptions="Center">
+                            <Label Text="{Binding City.Name}" 
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   LineBreakMode="TailTruncation" />
+                            <Label Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                   LineBreakMode="TailTruncation"
+                                   FontAttributes="Italic" 
+                                   VerticalOptions="End" />
+                            <Label Text="{Binding EndDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                   LineBreakMode="TailTruncation"
+                                   FontAttributes="Italic" 
+                                   VerticalOptions="End" />
+                            <Label Text="{Binding TotalAmount, StringFormat='{0:C2}'}" 
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   LineBreakMode="TailTruncation" />
+                        </StackLayout>
+                        <Image Grid.Column="1" 
+                               Source="ic_more_vert"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

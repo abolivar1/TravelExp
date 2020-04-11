@@ -22,5 +22,7 @@ namespace TravelExp.Common.Models
 
         public ICollection<TripDetailResponse> TripDetails { get; set; }
 
+        public decimal TotalAmount { get; set; }
+
     }
 }
