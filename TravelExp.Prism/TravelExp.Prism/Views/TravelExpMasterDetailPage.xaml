@@ -8,10 +8,10 @@
 
     <MasterDetailPage.Master BackgroundColor="Black">
         <ContentPage Title="Menu">
-            <StackLayout Padding="20" BackgroundColor="Black">
+            <StackLayout Padding="20" BackgroundColor="{StaticResource ColorBackgroud}">
                 <Image HeightRequest="300"
                        Source="gastosviaje"/>
-                <ListView BackgroundColor="Black"
+                <ListView BackgroundColor="{StaticResource ColorBackgroud}"
                           ItemsSource="{Binding Menus}"
                           HasUnevenRows="True"
                           SeparatorVisibility="None">

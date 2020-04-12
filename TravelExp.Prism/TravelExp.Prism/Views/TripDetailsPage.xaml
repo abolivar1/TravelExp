@@ -5,7 +5,7 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TravelExp.Prism.Views.TripDetailsPage"
-             BackgroundColor="Black"
+             BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
     <StackLayout Padding="5">
         <CollectionView ItemsSource="{Binding TripDetails}">
@@ -18,7 +18,7 @@
                         CornerRadius="30"
                         HasShadow="True"
                         Margin="5"
-                        BackgroundColor="Gray">
+                        BackgroundColor="{StaticResource ColorAccent}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -34,8 +34,7 @@
                                        FontAttributes="Bold"
                                        FontSize="Title"
                                        LineBreakMode="TailTruncation"
-                                       VerticalOptions="StartAndExpand"
-                                       TextColor="White"/>
+                                       VerticalOptions="StartAndExpand"/>
                             </StackLayout>
                             <StackLayout Grid.Row="1">
                                 <ffimageloading:CachedImage Aspect="Fill"
@@ -57,37 +56,31 @@
                                         <Label Text="Date: "
                                                 LineBreakMode="TailTruncation"
                                                 FontAttributes="Bold" 
-                                                VerticalOptions="End" 
-                                                TextColor="White"/>
+                                                VerticalOptions="End"/>
                                         <Label Text="Amount: " 
                                                 FontAttributes="Bold"
-                                                LineBreakMode="TailTruncation" 
-                                                TextColor="White" />
+                                                LineBreakMode="TailTruncation"/>
                                     </StackLayout>
                                     <StackLayout Grid.Column="1"
                                      VerticalOptions="Center">
                                         <Label Text="{Binding DateLocal, StringFormat='{0:dd/MM/yyyy hh:mm tt}'}"
                                             LineBreakMode="TailTruncation"
                                             FontAttributes="None" 
-                                            VerticalOptions="End" 
-                                                TextColor="White" />
+                                            VerticalOptions="End" />
                                         <Label Text="{Binding Amount, StringFormat='{0:C2}'}" 
                                             FontAttributes="None"
-                                            LineBreakMode="TailTruncation" 
-                                                TextColor="White" />
+                                            LineBreakMode="TailTruncation" />
                                     </StackLayout>
                                 </Grid>
                             </StackLayout>
                             <StackLayout Grid.Row="3">
                                 <Label Text="Description:"
                                    FontAttributes="Bold"
-                                   VerticalOptions="EndAndExpand" 
-                                                TextColor="White"/>
+                                   VerticalOptions="EndAndExpand"/>
                                 <Label Text="{Binding Description}"
                                    LineBreakMode="CharacterWrap"
                                    FontAttributes="None" 
-                                   VerticalOptions="EndAndExpand" 
-                                                TextColor="White"/>
+                                   VerticalOptions="EndAndExpand"/>
                             </StackLayout>
                         </Grid>
                     </Frame>

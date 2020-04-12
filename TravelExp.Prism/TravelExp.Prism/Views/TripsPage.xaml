@@ -5,7 +5,7 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TravelExp.Prism.Views.TripsPage"
-             BackgroundColor="Black"
+             BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
     <StackLayout Padding="5">
         <CollectionView ItemsSource="{Binding Trips}">
@@ -17,7 +17,7 @@
                     <Frame CornerRadius="25"
                         HasShadow="True"
                         Margin="0,0,0,5"
-                        BackgroundColor="Gray">
+                        BackgroundColor="{StaticResource ColorAccent}">
                         <Grid>
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SelectTripCommand}"/>
@@ -32,26 +32,22 @@
                                 <Label Text="{Binding City.Name}" 
                                    FontAttributes="Bold"
                                    FontSize="Medium"
-                                   LineBreakMode="TailTruncation"
-                                       TextColor="White"/>
+                                   LineBreakMode="TailTruncation"/>
                                 <Label Text="Start Date"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="None" 
-                                   VerticalOptions="End"
-                                       TextColor="White" />
+                                   VerticalOptions="End" />
                                 <Label Text="End Date"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="None" 
-                                   VerticalOptions="End"
-                                       TextColor="White" />
+                                   VerticalOptions="End"/>
                             </StackLayout>
                             <StackLayout Grid.Column="1"
                                      VerticalOptions="Center">
                                 <Label Text="{Binding TotalAmount, StringFormat='{0:C2}'}" 
                                    FontAttributes="Bold"
                                    FontSize="Medium"
-                                   LineBreakMode="TailTruncation"
-                                       TextColor="White" />
+                                   LineBreakMode="TailTruncation"/>
                                 <Label Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="None" 
@@ -60,8 +56,7 @@
                                 <Label Text="{Binding EndDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="None" 
-                                   VerticalOptions="End"
-                                       TextColor="White" />
+                                   VerticalOptions="End"/>
                             </StackLayout>
                             <Image Grid.Column="2" 
                                Source="ic_more_vert"/>
