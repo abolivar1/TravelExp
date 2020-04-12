@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TravelExp.Common.Enums;
 using TravelExp.Web.Data.Entities;
 using TravelExp.Web.Models;
 
@@ -13,6 +14,8 @@ namespace TravelExp.Web.Helpers
         Task<Employee> GetUserByEmailAsync(string email);
 
         Task<IdentityResult> AddUserAsync(Employee user, string password);
+
+        Task<Employee> AddUserAsync(AddUserViewModel model, string path, UserType userType);
 
         Task CheckRoleAsync(string roleName);
 
@@ -41,5 +44,6 @@ namespace TravelExp.Web.Helpers
         Task<string> GeneratePasswordResetTokenAsync(Employee user);
 
         Task<IdentityResult> ResetPasswordAsync(Employee user, string token, string password);
+
     }
 }

@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TravelExp.Common.Enums;
+using TravelExp.Web.Data;
 using TravelExp.Web.Data.Entities;
 using TravelExp.Web.Models;
 
@@ -13,16 +16,19 @@ namespace TravelExp.Web.Helpers
         private readonly UserManager<Employee> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<Employee> _signInManager;
+        private readonly DataContext _context;
 
         public UserHelper(
             UserManager<Employee> userManager,
             RoleManager<IdentityRole> roleManager,
-            SignInManager<Employee> signInManager)
+            SignInManager<Employee> signInManager,
+            DataContext context)
 
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
+            _context = context;
         }
 
         public async Task<SignInResult> LoginAsync(LoginViewModel model)
@@ -38,6 +44,33 @@ namespace TravelExp.Web.Helpers
         {
             await _signInManager.SignOutAsync();
         }
+
+        public async Task<Employee> AddUserAsync(AddUserViewModel model, string path, UserType userType)
+        {
+            Employee userEntity = new Employee
+            {
+                Address = model.Address,
+                Document = model.Document,
+                Email = model.Username,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PicturePath = path,
+                PhoneNumber = model.PhoneNumber,
+                UserName = model.Username,
+                UserType = userType
+            };
+
+            IdentityResult result = await _userManager.CreateAsync(userEntity, model.Password);
+            if (result != IdentityResult.Success)
+            {
+                return null;
+            }
+
+            Employee newUser = await GetUserByEmailAsync(model.Username);
+            await AddUserToRoleAsync(newUser, userEntity.UserType.ToString());
+            return newUser;
+        }
+
 
         public async Task<IdentityResult> AddUserAsync(Employee user, string password)
         {
@@ -63,7 +96,15 @@ namespace TravelExp.Web.Helpers
 
         public async Task<Employee> GetUserByEmailAsync(string email)
         {
-            var user = await _userManager.FindByEmailAsync(email);
+            var user = await _context.Users
+                .Include(u => u.Trips)
+                .ThenInclude(t => t.TripDetails)
+                .ThenInclude(td => td.ExpenseType)
+                .Include(u => u.Trips)
+                .ThenInclude(t => t.City)
+                .ThenInclude(c => c.Country)
+                .FirstOrDefaultAsync(u => u.Email.Equals(email));
+
             return user;
         }
 
@@ -113,7 +154,16 @@ namespace TravelExp.Web.Helpers
 
         public async Task<Employee> GetUserByIdAsync(string userId)
         {
-            return await _userManager.FindByIdAsync(userId);
+            var user = await _context.Users
+                .Include(u => u.Trips)
+                .ThenInclude(t => t.TripDetails)
+                .ThenInclude(td => td.ExpenseType)
+                .Include(u => u.Trips)
+                .ThenInclude(t => t.City)
+                .ThenInclude(c => c.Country)
+                .FirstOrDefaultAsync(u => u.Id.Equals(userId));
+
+            return user;
         }
 
         public async Task<string> GeneratePasswordResetTokenAsync(Employee user)
