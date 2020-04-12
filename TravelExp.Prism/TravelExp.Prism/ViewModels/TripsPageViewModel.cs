@@ -14,6 +14,7 @@ namespace TravelExp.Prism.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
         private List<TripItemViewModel> _trips;
+        private bool _isRunning;
 
         public TripsPageViewModel(
             INavigationService navigationService,
@@ -25,6 +26,13 @@ namespace TravelExp.Prism.ViewModels
             LoadTripsAsync();
         }
 
+        public bool IsRunning
+        {
+            get => _isRunning;
+            set => SetProperty(ref _isRunning, value);
+        }
+
+
         public List<TripItemViewModel> Trips
         {
             get => _trips;
@@ -33,12 +41,13 @@ namespace TravelExp.Prism.ViewModels
 
         private async void LoadTripsAsync()
         {
+            IsRunning = true;
             string url = App.Current.Resources["UrlAPI"].ToString();
             Response response = await _apiService.GetListAsync<TripResponse>(
                 url,
                 "/api",
                 "/Trips");
-
+            IsRunning = false;
             if (!response.IsSuccess)
             {
                 await App.Current.MainPage.DisplayAlert(

@@ -1,5 +1,6 @@
 ﻿using Prism;
 using Prism.Ioc;
+using Syncfusion.Licensing;
 using TravelExp.Common.Services;
 using TravelExp.Prism.ViewModels;
 using TravelExp.Prism.Views;
@@ -22,8 +23,8 @@ namespace TravelExp.Prism
 
         protected override async void OnInitialized()
         {
+            SyncfusionLicenseProvider.RegisterLicense("MjM4ODM1QDMxMzgyZTMxMmUzMGFWVDdycTNLQUR3V2Z1YWkrKzBDcFdmbURZZWl4RjdRVnhWSU43RTZTOVk9");
             InitializeComponent();
-
             await NavigationService.NavigateAsync("/TravelExpMasterDetailPage/NavigationPage/TripsPage");
         }
 

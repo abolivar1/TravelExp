@@ -2,68 +2,84 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TravelExp.Prism.Views.TripsPage"
              BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
-    <StackLayout Padding="5">
-        <CollectionView ItemsSource="{Binding Trips}">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame CornerRadius="25"
+    <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All" 
+                    Padding="5">
+            <CollectionView ItemsSource="{Binding Trips}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="25"
                         HasShadow="True"
                         Margin="0,0,0,5"
                         BackgroundColor="{StaticResource ColorAccent}">
-                        <Grid>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding SelectTripCommand}"/>
-                            </Grid.GestureRecognizers>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <StackLayout Grid.Column="0"
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectTripCommand}"/>
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0"
                                      VerticalOptions="Center">
-                                <Label Text="{Binding City.Name}" 
+                                    <Label Text="{Binding City.Name}" 
                                    FontAttributes="Bold"
                                    FontSize="Medium"
                                    LineBreakMode="TailTruncation"/>
-                                <Label Text="Start Date"
+                                    <Label Text="Start Date"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="None" 
                                    VerticalOptions="End" />
-                                <Label Text="End Date"
+                                    <Label Text="End Date"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="None" 
                                    VerticalOptions="End"/>
-                            </StackLayout>
-                            <StackLayout Grid.Column="1"
+                                </StackLayout>
+                                <StackLayout Grid.Column="1"
                                      VerticalOptions="Center">
-                                <Label Text="{Binding TotalAmount, StringFormat='{0:C2}'}" 
+                                    <Label Text="{Binding TotalAmount, StringFormat='{0:C2}'}" 
                                    FontAttributes="Bold"
                                    FontSize="Medium"
                                    LineBreakMode="TailTruncation"/>
-                                <Label Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                    <Label Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="None" 
                                    VerticalOptions="End"
                                        TextColor="White" />
-                                <Label Text="{Binding EndDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                    <Label Text="{Binding EndDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="None" 
                                    VerticalOptions="End"/>
-                            </StackLayout>
-                            <Image Grid.Column="2" 
+                                </StackLayout>
+                                <Image Grid.Column="2" 
                                Source="ic_more_vert"/>
-                        </Grid>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        <busyindicator:SfBusyIndicator AnimationType="Ball" 
+                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                                       AbsoluteLayout.LayoutFlags="All"
+                                       BackgroundColor="{StaticResource ColorBackgroud}"
+                                       HorizontalOptions="Center"
+                                       TextColor="{StaticResource ColorFont}"
+                                       IsVisible="{Binding IsRunning}"
+                                       Title="Loading..."
+                                       VerticalOptions="Center"
+                                       ViewBoxWidth="80"
+                                       ViewBoxHeight="80" />
+    </AbsoluteLayout>
+        
 </ContentPage>
