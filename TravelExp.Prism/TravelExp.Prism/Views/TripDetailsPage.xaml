@@ -5,6 +5,7 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TravelExp.Prism.Views.TripDetailsPage"
+             BackgroundColor="Black"
              Title="{Binding Title}">
     <StackLayout Padding="5">
         <CollectionView ItemsSource="{Binding TripDetails}">
@@ -16,38 +17,77 @@
                     <Frame 
                         CornerRadius="30"
                         HasShadow="True"
-                        Margin="0,0,0,5">
+                        Margin="5"
+                        BackgroundColor="Gray">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <StackLayout Grid.Column="0"
-                                     VerticalOptions="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0">
                                 <Label Text="{Binding ExpenseType.Name}" 
-                                   FontAttributes="Bold"
-                                   FontSize="Medium"
-                                   LineBreakMode="TailTruncation" />
-                                <Label Text="{Binding DateLocal, StringFormat='{0:dd/MM/yyyy hh:mm tt}'}"
-                                   LineBreakMode="TailTruncation"
-                                   FontAttributes="Italic" 
-                                   VerticalOptions="End" />
-                                <Label Text="{Binding Description}"
-                                   LineBreakMode="TailTruncation"
-                                   FontAttributes="Italic" 
-                                   VerticalOptions="End" />
-                                <Label Text="{Binding Amount, StringFormat='{0:C2}'}" 
-                                   FontAttributes="Bold"
-                                   FontSize="Medium"
-                                   LineBreakMode="TailTruncation" />
-                                <ffimageloading:CachedImage Aspect="AspectFill"
+                                       FontAttributes="Bold"
+                                       FontSize="Title"
+                                       LineBreakMode="TailTruncation"
+                                       VerticalOptions="StartAndExpand"
+                                       TextColor="White"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1">
+                                <ffimageloading:CachedImage Aspect="Fill"
                                                     Source="{Binding LogoFullPath}" 
                                                     CacheDuration= "50"
-                                                    Margin="5"
                                                     RetryCount= "3"
                                                     RetryDelay= "600"
-                                                    WidthRequest="500"
-                                                    HeightRequest="500"/>
-
+                                                    WidthRequest="350"
+                                                    HeightRequest="350"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="2"
+                                     VerticalOptions="Center">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0">
+                                        <Label Text="Date: "
+                                                LineBreakMode="TailTruncation"
+                                                FontAttributes="Bold" 
+                                                VerticalOptions="End" 
+                                                TextColor="White"/>
+                                        <Label Text="Amount: " 
+                                                FontAttributes="Bold"
+                                                LineBreakMode="TailTruncation" 
+                                                TextColor="White" />
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1"
+                                     VerticalOptions="Center">
+                                        <Label Text="{Binding DateLocal, StringFormat='{0:dd/MM/yyyy hh:mm tt}'}"
+                                            LineBreakMode="TailTruncation"
+                                            FontAttributes="None" 
+                                            VerticalOptions="End" 
+                                                TextColor="White" />
+                                        <Label Text="{Binding Amount, StringFormat='{0:C2}'}" 
+                                            FontAttributes="None"
+                                            LineBreakMode="TailTruncation" 
+                                                TextColor="White" />
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Grid.Row="3">
+                                <Label Text="Description:"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="EndAndExpand" 
+                                                TextColor="White"/>
+                                <Label Text="{Binding Description}"
+                                   LineBreakMode="CharacterWrap"
+                                   FontAttributes="None" 
+                                   VerticalOptions="EndAndExpand" 
+                                                TextColor="White"/>
                             </StackLayout>
                         </Grid>
                     </Frame>

@@ -204,5 +204,23 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_more_vert.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gastosviaje.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\changepass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\trips.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

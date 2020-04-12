@@ -24,7 +24,7 @@ namespace TravelExp.Prism
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/TripsPage");
+            await NavigationService.NavigateAsync("/TravelExpMasterDetailPage/NavigationPage/TripsPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -33,6 +33,10 @@ namespace TravelExp.Prism
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<TripsPage, TripsPageViewModel>();
             containerRegistry.RegisterForNavigation<TripDetailsPage, TripDetailsPageViewModel>();
+            containerRegistry.RegisterForNavigation<TravelExpMasterDetailPage, TravelExpMasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<ModifyUserPage, ModifyUserPageViewModel>();
+            containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordPageViewModel>();
         }
     }
 }
