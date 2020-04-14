@@ -27,6 +27,7 @@ namespace TravelExp.Common.Models
     ? "https://travelexpalex.azurewebsites.net//images/noimage.png"
     : $"https://travelexpalex.azurewebsites.net{PicturePath.Substring(1)}";
 
+        public List<TripResponse> Trips { get; set; }
 
         public UserType UserType { get; set; }
 

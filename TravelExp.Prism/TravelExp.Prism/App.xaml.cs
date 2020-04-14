@@ -38,6 +38,8 @@ namespace TravelExp.Prism
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.RegisterForNavigation<ModifyUserPage, ModifyUserPageViewModel>();
             containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordPageViewModel>();
+            containerRegistry.RegisterForNavigation<AddTripPage, AddTripPageViewModel>();
+            containerRegistry.RegisterForNavigation<AddTripDetailPage, AddTripDetailPageViewModel>();
         }
     }
 }

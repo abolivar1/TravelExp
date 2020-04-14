@@ -71,6 +71,7 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1422" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\Localize.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,6 +99,10 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\TravelExp.Common\TravelExp.Common.csproj">
+      <Project>{1CDDB5A4-382E-418E-A4ED-B3D9F8B028C2}</Project>
+      <Name>TravelExp.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TravelExp.Prism\TravelExp.Prism.csproj">
       <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
       <Name>TravelExp.Prism</Name>

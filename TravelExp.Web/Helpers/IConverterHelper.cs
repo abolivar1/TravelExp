@@ -18,5 +18,7 @@ namespace TravelExp.Web.Helpers
 
         List<TripResponse> ToTripResponse(List<Trip> tripEntities);
 
+        EmployeeResponse ToUserResponse(Employee userEntity);
+
     }
 }

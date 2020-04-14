@@ -1,7 +1,5 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TravelExp.Common.Models;
@@ -15,6 +13,7 @@ namespace TravelExp.Prism.ViewModels
         private readonly IApiService _apiService;
         private List<TripItemViewModel> _trips;
         private bool _isRunning;
+        private DelegateCommand _addTripCommand;
 
         public TripsPageViewModel(
             INavigationService navigationService,
@@ -24,6 +23,13 @@ namespace TravelExp.Prism.ViewModels
             _apiService = apiService;
             Title = "Trips";
             LoadTripsAsync();
+        }
+
+        public DelegateCommand AddTripCommand => _addTripCommand ?? (_addTripCommand = new DelegateCommand(AddTripAsync));
+
+        private async void AddTripAsync()
+        {
+            await _navigationService.NavigateAsync("AddTripPage");
         }
 
         public bool IsRunning

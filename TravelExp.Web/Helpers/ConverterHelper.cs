@@ -114,7 +114,7 @@ namespace TravelExp.Web.Helpers
             return list;
         }
 
-        private EmployeeResponse ToUserResponse(Employee user)
+        public EmployeeResponse ToUserResponse(Employee user)
         {
             if (user == null)
             {
@@ -131,7 +131,8 @@ namespace TravelExp.Web.Helpers
                 LastName = user.LastName,
                 PhoneNumber = user.PhoneNumber,
                 PicturePath = user.PicturePath,
-                UserType = user.UserType
+                UserType = user.UserType,
+                Trips = ToTripResponse(user.Trips.ToList())
             };
         }
 

@@ -69,6 +69,18 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
+        <Button Command="{Binding AddTripCommand}"
+                ImageSource="add"
+                AbsoluteLayout.LayoutBounds=".75,.90,.90,.75"
+                AbsoluteLayout.LayoutFlags="All"
+                WidthRequest      ="70"
+                HeightRequest     ="70"
+                CornerRadius      ="35"
+                VerticalOptions   ="End"
+                HorizontalOptions="Start"
+                BorderWidth="5"
+                BorderColor="{StaticResource ColorDanger}"
+                BackgroundColor   ="{StaticResource ColorFont}"/>
         <busyindicator:SfBusyIndicator AnimationType="Ball" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                                        AbsoluteLayout.LayoutFlags="All"
