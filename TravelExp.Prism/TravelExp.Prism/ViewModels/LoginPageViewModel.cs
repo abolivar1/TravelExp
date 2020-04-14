@@ -122,7 +122,7 @@ namespace TravelExp.Prism.ViewModels
             IsRunning = false;
             IsEnabled = true;
 
-            await _navigationService.NavigateAsync("/SoccerMasterDetailPage/NavigationPage/TournamentsPage");
+            await _navigationService.NavigateAsync("/TravelExpMasterDetailPage/NavigationPage/TripsPage");
             Password = string.Empty;
         }
 
