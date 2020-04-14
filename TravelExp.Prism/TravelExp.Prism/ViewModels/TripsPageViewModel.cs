@@ -14,6 +14,7 @@ namespace TravelExp.Prism.ViewModels
         private List<TripItemViewModel> _trips;
         private bool _isRunning;
         private DelegateCommand _addTripCommand;
+        private EmployeeResponse _employee;
 
         public TripsPageViewModel(
             INavigationService navigationService,
@@ -22,7 +23,6 @@ namespace TravelExp.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiService;
             Title = "Trips";
-            LoadTripsAsync();
         }
 
         public DelegateCommand AddTripCommand => _addTripCommand ?? (_addTripCommand = new DelegateCommand(AddTripAsync));
@@ -45,7 +45,13 @@ namespace TravelExp.Prism.ViewModels
             set => SetProperty(ref _trips, value);
         }
 
-        private async void LoadTripsAsync()
+        public EmployeeResponse Employee
+        {
+            get => _employee;
+            set => SetProperty(ref _employee, value);
+        }
+
+        /*private async void LoadTripsAsync()
         {
             IsRunning = true;
             string url = App.Current.Resources["UrlAPI"].ToString();
@@ -75,6 +81,26 @@ namespace TravelExp.Prism.ViewModels
                 StartDate = t.StartDate
             }).ToList();
 
+        }*/
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+
+            if (parameters.ContainsKey("employee"))
+            {
+                _employee = parameters.GetValue<EmployeeResponse>("employee");
+                List<TripResponse> list = _employee.Trips;
+                Trips = list.Select(t => new TripItemViewModel(_navigationService)
+                {
+                    EndDate = t.EndDate,
+                    TripDetails = t.TripDetails,
+                    Id = t.Id,
+                    Employee = t.Employee,
+                    City = t.City,
+                    TotalAmount = t.TotalAmount,
+                    StartDate = t.StartDate
+                }).ToList();
+            }
         }
     }
 

@@ -82,8 +82,8 @@ namespace TravelExp.Prism.ViewModels
             bool connection = await _apiService.CheckConnectionAsync(url);
             if (!connection)
             {
-                IsRunning = true;
-                IsEnabled = false;
+                IsRunning = false;
+                IsEnabled = true;
                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
                 return;
             }
@@ -121,8 +121,14 @@ namespace TravelExp.Prism.ViewModels
 
             IsRunning = false;
             IsEnabled = true;
+            var parameters = new NavigationParameters
+            {
+                { "token", token },
+                { "employee", userResponse }
+            };
 
-            await _navigationService.NavigateAsync("/TravelExpMasterDetailPage/NavigationPage/TripsPage");
+
+            await _navigationService.NavigateAsync("/TravelExpMasterDetailPage/NavigationPage/TripsPage", parameters);
             Password = string.Empty;
         }
 

@@ -3,6 +3,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TravelExp.Common.Helpers;
 using TravelExp.Common.Models;
 
 namespace TravelExp.Prism.ViewModels
@@ -21,7 +22,14 @@ namespace TravelExp.Prism.ViewModels
 
         private async void SelectMenuAsync()
         {
-            await _navigationService.NavigateAsync($"/TravelExpMasterDetailPage/NavigationPage/{PageName}");
+            if(PageName != "LoginPage")
+            {
+                await _navigationService.NavigateAsync($"/TravelExpMasterDetailPage/NavigationPage/{PageName}");
+            }
+            Settings.IsLogin = false;
+            Settings.User = null;
+            Settings.Token = null;
+            await _navigationService.NavigateAsync($"/NavigationPage/{PageName}");
         }
     }
 

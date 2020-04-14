@@ -25,7 +25,7 @@ namespace TravelExp.Prism
         {
             SyncfusionLicenseProvider.RegisterLicense("MjM4ODM1QDMxMzgyZTMxMmUzMGFWVDdycTNLQUR3V2Z1YWkrKzBDcFdmbURZZWl4RjdRVnhWSU43RTZTOVk9");
             InitializeComponent();
-            await NavigationService.NavigateAsync("/TravelExpMasterDetailPage/NavigationPage/TripsPage");
+            await NavigationService.NavigateAsync("NavigationPage/LoginPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

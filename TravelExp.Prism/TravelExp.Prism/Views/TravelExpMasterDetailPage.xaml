@@ -11,6 +11,10 @@
             <StackLayout Padding="20" BackgroundColor="{StaticResource ColorBackgroud}">
                 <Image HeightRequest="300"
                        Source="gastosviaje"/>
+                <Label FontAttributes="Bold"
+                        FontSize="Large"
+                        Text="{Binding User.FullName}"/>
+
                 <ListView BackgroundColor="{StaticResource ColorBackgroud}"
                           ItemsSource="{Binding Menus}"
                           HasUnevenRows="True"
