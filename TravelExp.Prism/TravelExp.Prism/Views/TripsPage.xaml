@@ -11,65 +11,65 @@
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All" 
                     Padding="5">
-            <CollectionView ItemsSource="{Binding Trips}">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame CornerRadius="25"
+        <CollectionView ItemsSource="{Binding Trips}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="25"
                         HasShadow="True"
                         Margin="0,0,0,5"
                         BackgroundColor="{StaticResource ColorAccent}">
-                            <Grid>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SelectTripCommand}"/>
-                                </Grid.GestureRecognizers>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Column="0"
+                        <Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectTripCommand}"/>
+                            </Grid.GestureRecognizers>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0"
                                      VerticalOptions="Center">
-                                    <Label Text="{Binding City.Name}" 
+                                <Label Text="{Binding City.Name}" 
                                    FontAttributes="Bold"
                                    FontSize="Medium"
                                    LineBreakMode="TailTruncation"/>
-                                    <Label Text="Start Date"
+                                <Label Text="Start Date"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="None" 
                                    VerticalOptions="End" />
-                                    <Label Text="End Date"
+                                <Label Text="End Date"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="None" 
                                    VerticalOptions="End"/>
-                                </StackLayout>
-                                <StackLayout Grid.Column="1"
+                            </StackLayout>
+                            <StackLayout Grid.Column="1"
                                      VerticalOptions="Center">
-                                    <Label Text="{Binding TotalAmount, StringFormat='{0:C2}'}" 
+                                <Label Text="{Binding TotalAmount, StringFormat='{0:C2}'}" 
                                    FontAttributes="Bold"
                                    FontSize="Medium"
                                    LineBreakMode="TailTruncation"/>
-                                    <Label Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                <Label Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="None" 
                                    VerticalOptions="End"
                                        TextColor="White" />
-                                    <Label Text="{Binding EndDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                <Label Text="{Binding EndDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="None" 
                                    VerticalOptions="End"/>
-                                </StackLayout>
-                                <Image Grid.Column="2" 
+                            </StackLayout>
+                            <Image Grid.Column="2" 
                                Source="ic_more_vert"/>
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
-        <Button Command="{Binding AddTripCommand}"
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+    <Button Command="{Binding AddTripCommand}"
                 ImageSource="add"
                 AbsoluteLayout.LayoutBounds=".75,.90,.90,.75"
                 AbsoluteLayout.LayoutFlags="All"
@@ -81,7 +81,7 @@
                 BorderWidth="5"
                 BorderColor="{StaticResource ColorDanger}"
                 BackgroundColor   ="{StaticResource ColorFont}"/>
-        <busyindicator:SfBusyIndicator AnimationType="Ball" 
+    <busyindicator:SfBusyIndicator AnimationType="Ball" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                                        AbsoluteLayout.LayoutFlags="All"
                                        BackgroundColor="{StaticResource ColorBackgroud}"
@@ -93,5 +93,5 @@
                                        ViewBoxWidth="80"
                                        ViewBoxHeight="80" />
     </AbsoluteLayout>
-        
+
 </ContentPage>

@@ -104,5 +104,4 @@
             BorderColor="{StaticResource ColorDanger}"
             BackgroundColor   ="{StaticResource ColorFont}"/>
     </AbsoluteLayout>
-    
 </ContentPage>

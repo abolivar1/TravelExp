@@ -16,7 +16,7 @@ using TravelExp.Web.Resources;
 
 namespace TravelExp.Web.Controllers.API
 {
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     [Route("api/[controller]")]
     public class TripsController : ControllerBase
