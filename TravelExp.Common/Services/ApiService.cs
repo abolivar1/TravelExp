@@ -12,6 +12,42 @@ namespace TravelExp.Common.Services
 {
     public class ApiService : IApiService
     {
+        public async Task<Response> AddTripAsync(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, TripRequest triprequest)
+        {
+            try
+            {
+                string request = JsonConvert.SerializeObject(triprequest);
+                StringContent content = new StringContent(request, Encoding.UTF8, "application/json");
+                HttpClient client = new HttpClient
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                string url = $"{servicePrefix}{controller}";
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string answer = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer
+                    };
+                }
+
+                Response obj = JsonConvert.DeserializeObject<Response>(answer);
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message
+                };
+            }
+        }
+
         public async Task<bool> CheckConnectionAsync(string url)
         {
             if (!CrossConnectivity.Current.IsConnected)
@@ -114,7 +150,9 @@ namespace TravelExp.Common.Services
         public async Task<Response> GetListAsync<T>(
             string urlBase,
             string servicePrefix,
-            string controller)
+            string controller,
+            string tokenType,
+            string accessToken)
         {
             try
             {
@@ -122,7 +160,7 @@ namespace TravelExp.Common.Services
                 {
                     BaseAddress = new Uri(urlBase),
                 };
-
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
                 var url = $"{servicePrefix}{controller}";
                 var response = await client.GetAsync(url);
                 var result = await response.Content.ReadAsStringAsync();

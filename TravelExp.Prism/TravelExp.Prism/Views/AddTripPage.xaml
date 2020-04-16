@@ -6,6 +6,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TravelExp.Prism.Views.AddTripPage"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
     <AbsoluteLayout>
@@ -26,10 +27,13 @@
                                FontAttributes="Bold"
                                FontSize="Medium"
                                VerticalOptions="Center"/>
-                        <Entry Grid.Row="1"
-                               Placeholder="City"
-                               TextColor="{StaticResource ColorFont}"
-                               Text="{Binding User.FirstName}"/>
+                        <combobox:SfComboBox HeightRequest="40" x:Name="comboBox" Grid.Row="1" TextColor="White"
+                                             IsEditableMode="true" AllowFiltering="true" SuggestionMode="Contains"
+                                             DataSource="{Binding Cities}"
+                                             DisplayMemberPath="Name"
+                                             SelectedItem="{Binding City}">
+                            
+                        </combobox:SfComboBox>
                         <Label Grid.Row="2"
                                Text="Date"
                                FontAttributes="Bold"
@@ -37,10 +41,11 @@
                                VerticalOptions="Center"/>
                         <syncfusion:SfCalendar x:Name="calendar" 
                                                SelectionMode="RangeSelection"
-                                               Grid.Row="3">
+                                               Grid.Row="3"
+                                               SelectedRange ="{Binding SelectedRange, Mode=TwoWay}">
                             <syncfusion:SfCalendar.MonthViewSettings>
                                 <syncfusion:MonthViewSettings CurrentMonthBackgroundColor="Black"
-                                                              CurrentMonthTextColor="#ffffff"
+                                                              CurrentMonthTextColor="White"
                                                               TodayBorderColor="White"
                                                               TodayTextColor="White"
 		                                                    PreviousMonthBackgroundColor="Black"
@@ -70,11 +75,11 @@
         <busyindicator:SfBusyIndicator AnimationType="Ball" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                                        AbsoluteLayout.LayoutFlags="All"
-                                       BackgroundColor="{StaticResource ColorAccent}"
+                                       BackgroundColor="{StaticResource ColorBackgroud}"
                                        HorizontalOptions="Center"
-                                       TextColor="{StaticResource ColorFontInverse}"
+                                       TextColor="{StaticResource ColorFont}"
                                        IsVisible="{Binding IsRunning}"
-                                       Title="Loading"
+                                       Title="Loading..."
                                        VerticalOptions="Center"
                                        ViewBoxWidth="80"
                                        ViewBoxHeight="80" />

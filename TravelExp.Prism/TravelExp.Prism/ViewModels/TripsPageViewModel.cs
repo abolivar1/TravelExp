@@ -99,7 +99,8 @@ namespace TravelExp.Prism.ViewModels
                     City = t.City,
                     TotalAmount = t.TotalAmount,
                     StartDate = t.StartDate
-                }).ToList();
+                }).OrderByDescending(t => t.Id)
+                .ToList();
             }
         }
     }

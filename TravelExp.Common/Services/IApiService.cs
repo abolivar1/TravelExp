@@ -8,7 +8,7 @@ namespace TravelExp.Common.Services
 {
     public interface IApiService
     {
-        Task<Response> GetListAsync<T>(string urlBase, string servicePrefix, string controller);
+        Task<Response> GetListAsync<T>(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken);
 
         Task<Response> GetTokenAsync(string urlBase, string servicePrefix, string controller, TokenRequest request);
 
@@ -16,6 +16,7 @@ namespace TravelExp.Common.Services
 
         Task<bool> CheckConnectionAsync(string url);
 
+        Task<Response> AddTripAsync(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, TripRequest request);
     }
 
 }
