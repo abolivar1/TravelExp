@@ -17,6 +17,8 @@ namespace TravelExp.Common.Services
         Task<bool> CheckConnectionAsync(string url);
 
         Task<Response> AddTripAsync(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, TripRequest request);
+
+        Task<Response> AddTripDetailAsync(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, TripDetailRequest request);
     }
 
 }

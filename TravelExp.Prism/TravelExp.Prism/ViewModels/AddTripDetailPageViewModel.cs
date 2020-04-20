@@ -1,8 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using Xamarin.Forms;
+using Newtonsoft.Json;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,6 +17,7 @@ namespace TravelExp.Prism.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
+        private ImageSource _image;
         private ExpenseTypeResponse _expenseType;
         private ObservableCollection<ExpenseTypeResponse> _expenseTypes;
         private bool _isRunning;
@@ -30,6 +30,7 @@ namespace TravelExp.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiService;
             IsEnabled = true;
+            Image = App.Current.Resources["UrlNoImage"].ToString();
             LoadExpenseTypesAsync();
         }
 
@@ -46,6 +47,12 @@ namespace TravelExp.Prism.ViewModels
             set => SetProperty(ref _expenseTypes, value);
         }
 
+        public ImageSource Image
+        {
+            get => _image;
+            set => SetProperty(ref _image, value);
+        }
+
         public bool IsRunning
         {
             get => _isRunning;
@@ -60,7 +67,7 @@ namespace TravelExp.Prism.ViewModels
 
         private async void AddTripDetailAsync()
         {
-            bool isValid = await ValidateDataAsync();
+            /*bool isValid = await ValidateDataAsync();
             if (!isValid)
             {
                 return;
@@ -79,6 +86,26 @@ namespace TravelExp.Prism.ViewModels
             }
             TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             EmployeeResponse employee = JsonConvert.DeserializeObject<EmployeeResponse>(Settings.User);
+
+            
+
+            User.TeamId = Team.Id;
+            User.PictureArray = imageArray;
+            User.CultureInfo = Languages.Culture;
+
+            Response response = await _apiService.RegisterUserAsync(url, "/api", "/Account", User);
+            IsRunning = false;
+            IsEnabled = true;
+
+            if (!response.IsSuccess)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                return;
+            }
+
+            await App.Current.MainPage.DisplayAlert(Languages.Ok, response.Message, Languages.Accept);
+            await _navigationService.GoBackAsync();
+
             /*TripDetailRequest request = new TripDetailRequest
             {
                 StartDate = SelectedRange.StartDate,
@@ -94,7 +121,7 @@ namespace TravelExp.Prism.ViewModels
                 return;
             }
             IsRunning = false;
-            await App.Current.MainPage.DisplayAlert("Ok", response.Message, Languages.Accept);*/
+            await App.Current.MainPage.DisplayAlert("Ok", response.Message, Languages.Accept);
             EmailRequest request2 = new EmailRequest
             {
                 CultureInfo = Languages.Culture,
@@ -110,22 +137,22 @@ namespace TravelExp.Prism.ViewModels
                 { "token", token },
                 { "employee", userResponse }
             };
-            await _navigationService.GoBackAsync(parameters);
+            await _navigationService.GoBackAsync(parameters);*/
         }
 
         private async Task<bool> ValidateDataAsync()
         {
-           /*if (City == null)
-            {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select a city", Languages.Accept);
-                return false;
-            }
+            /*if (City == null)
+             {
+                 await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select a city", Languages.Accept);
+                 return false;
+             }
 
-            if (SelectedRange == null)
-            {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select a date rage", Languages.Accept);
-                return false;
-            }*/
+             if (SelectedRange == null)
+             {
+                 await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select a date rage", Languages.Accept);
+                 return false;
+             }*/
 
             return true;
         }
