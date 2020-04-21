@@ -16,18 +16,18 @@
             <Image HeightRequest="150"
                    Margin="0,20,0,0"
                    Source="gastosviaje"/>
-            <Grid Margin="20" 
-                  VerticalOptions="CenterAndExpand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" 
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Grid Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" 
                        Grid.Row="0"
                        HorizontalTextAlignment="End"
                        Text="Email"
                        VerticalOptions="Center"/>
-                <Entry Grid.Column="1"
+                    <Entry Grid.Column="1"
                        Grid.Row="0"
                        BackgroundColor="{StaticResource ColorBackgroud}"
                        PlaceholderColor="{StaticResource ColorSecondary}"
@@ -35,12 +35,12 @@
                        Placeholder="Enter Your Email"
                        TextColor="{StaticResource ColorFont}"
                        Text="{Binding Email}"/>
-                <Label Grid.Column="0" 
+                    <Label Grid.Column="0" 
                        Grid.Row="1"
                        HorizontalTextAlignment="End"
                        Text="Password"
                        VerticalOptions="Center"/>
-                <Entry Grid.Column="1"
+                    <Entry Grid.Column="1"
                        Grid.Row="1"
                        BackgroundColor="{StaticResource ColorBackgroud}"
                        PlaceholderColor="{StaticResource ColorSecondary}"
@@ -48,7 +48,19 @@
                        Placeholder="Enter your password"
                        TextColor="{StaticResource ColorFont}"
                        Text="{Binding Password}"/>
-            </Grid>
+                </Grid>
+                <Label FontAttributes="Bold"
+                       TextDecorations="Underline"
+                    HorizontalOptions="Center" 
+                    Text="Forgot your password?"
+                    TextColor="{StaticResource ColorFont}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </StackLayout>
+                
             <StackLayout>
                 <Button Command="{Binding LoginCommand}" 
                         IsEnabled="{Binding IsEnabled}"

@@ -29,6 +29,11 @@ namespace TravelExp.Common.Models
         [StringLength(20, MinimumLength = 6)]
         public string Password { get; set; }
 
+        
+        [StringLength(20, MinimumLength = 6)]
+
+        public string PasswordConfirm { get; set; }
+
         public byte[] PictureArray { get; set; }
 
         [Required]

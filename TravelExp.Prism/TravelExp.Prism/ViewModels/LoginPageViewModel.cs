@@ -21,6 +21,7 @@ namespace TravelExp.Prism.ViewModels
         private string _password;
         private DelegateCommand _loginCommand;
         private DelegateCommand _registerCommand;
+        private DelegateCommand _forgotPasswordCommand;
 
         public LoginPageViewModel(INavigationService navigationService, IApiService apiService)
             : base(navigationService)
@@ -35,6 +36,7 @@ namespace TravelExp.Prism.ViewModels
 
         public DelegateCommand RegisterCommand => _registerCommand ?? (_registerCommand = new DelegateCommand(RegisterAsync));
 
+        public DelegateCommand ForgotPasswordCommand => _forgotPasswordCommand ?? (_forgotPasswordCommand = new DelegateCommand(ForgotPasswordAsync));
         public bool IsRunning
         {
             get => _isRunning;
@@ -121,20 +123,19 @@ namespace TravelExp.Prism.ViewModels
 
             IsRunning = false;
             IsEnabled = true;
-            var parameters = new NavigationParameters
-            {
-                { "token", token },
-                { "employee", userResponse }
-            };
-
-
-            await _navigationService.NavigateAsync("/TravelExpMasterDetailPage/NavigationPage/TripsPage", parameters);
+            await _navigationService.NavigateAsync("/TravelExpMasterDetailPage/NavigationPage/TripsPage");
             Password = string.Empty;
         }
 
-        private void RegisterAsync()
+        private async void RegisterAsync()
         {
+            await _navigationService.NavigateAsync("RegisterPage");
         }
+        private async void ForgotPasswordAsync()
+        {
+            await _navigationService.NavigateAsync("RememberPasswordPage");
+        }
+
     }
 
 

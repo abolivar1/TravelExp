@@ -1,6 +1,7 @@
 ﻿using Prism;
 using Prism.Ioc;
 using Syncfusion.Licensing;
+using TravelExp.Common.Helpers;
 using TravelExp.Common.Services;
 using TravelExp.Prism.ViewModels;
 using TravelExp.Prism.Views;
@@ -31,6 +32,8 @@ namespace TravelExp.Prism
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<IApiService, ApiService>();
+            containerRegistry.Register<IFilesHelper, FilesHelper>();
+            containerRegistry.Register<IRegexHelper, RegexHelper>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<TripsPage, TripsPageViewModel>();
             containerRegistry.RegisterForNavigation<TripDetailsPage, TripDetailsPageViewModel>();
@@ -40,6 +43,8 @@ namespace TravelExp.Prism
             containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordPageViewModel>();
             containerRegistry.RegisterForNavigation<AddTripPage, AddTripPageViewModel>();
             containerRegistry.RegisterForNavigation<AddTripDetailPage, AddTripDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
+            containerRegistry.RegisterForNavigation<RememberPasswordPage, RememberPasswordPageViewModel>();
         }
     }
 }

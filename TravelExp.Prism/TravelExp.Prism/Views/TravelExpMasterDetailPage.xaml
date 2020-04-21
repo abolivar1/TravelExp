@@ -2,6 +2,7 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:prism="http://prismlibrary.com"
+                  xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="TravelExp.Prism.Views.TravelExpMasterDetailPage"
                   BackgroundColor="Black">
@@ -9,12 +10,28 @@
     <MasterDetailPage.Master BackgroundColor="Black">
         <ContentPage Title="Menu">
             <StackLayout Padding="20" BackgroundColor="{StaticResource ColorBackgroud}">
-                <Image HeightRequest="300"
-                       Source="gastosviaje"/>
-                <Label FontAttributes="Bold"
-                        FontSize="Large"
-                        Text="{Binding User.FullName}"/>
-
+                <RelativeLayout>
+                    <Image x:Name="Logo" HorizontalOptions="Center"
+                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=X,Factor=2,Constant=60}"
+                           HeightRequest="150"
+                           Source="gastosviaje"/>
+                    <ffimageloading:CachedImage x:Name="Picture" 
+                                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=Logo,Property=Y,Factor=1,Constant=60}"
+                                                Aspect="AspectFill"
+                                                Source="{Binding User.LogoFullPath}" 
+                                                CacheDuration= "50"
+                                                HeightRequest="100"
+                                                Margin="5"
+                                                RetryCount= "3"
+                                                RetryDelay= "600"
+                                                WidthRequest="100">
+                    </ffimageloading:CachedImage>
+                    <Label RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=Picture,Property=Y,Factor=1,Constant=110}"
+                           FontAttributes="Bold"
+                           FontSize="Large"
+                           Text="{Binding User.FullName}"
+                           TextColor="White"/>
+                </RelativeLayout>
                 <ListView BackgroundColor="{StaticResource ColorBackgroud}"
                           ItemsSource="{Binding Menus}"
                           HasUnevenRows="True"

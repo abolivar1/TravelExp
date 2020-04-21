@@ -22,14 +22,15 @@ namespace TravelExp.Prism.ViewModels
 
         private async void SelectMenuAsync()
         {
-            if(PageName != "LoginPage")
+            if(PageName.Equals("LoginPage"))
             {
-                await _navigationService.NavigateAsync($"/TravelExpMasterDetailPage/NavigationPage/{PageName}");
+                await _navigationService.NavigateAsync($"NavigationPage/{PageName}");
+                Settings.IsLogin = false;
+                Settings.User = null;
+                Settings.Token = null;
             }
-            Settings.IsLogin = false;
-            Settings.User = null;
-            Settings.Token = null;
-            await _navigationService.NavigateAsync($"/NavigationPage/{PageName}");
+            
+            await _navigationService.NavigateAsync($"/TravelExpMasterDetailPage/NavigationPage/{PageName}");
         }
     }
 

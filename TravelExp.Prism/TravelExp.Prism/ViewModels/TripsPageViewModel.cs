@@ -1,7 +1,9 @@
-﻿using Prism.Commands;
+﻿using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Navigation;
 using System.Collections.Generic;
 using System.Linq;
+using TravelExp.Common.Helpers;
 using TravelExp.Common.Models;
 using TravelExp.Common.Services;
 
@@ -23,6 +25,7 @@ namespace TravelExp.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiService;
             Title = "Trips";
+            LoadTripsAsync();
         }
 
         public DelegateCommand AddTripCommand => _addTripCommand ?? (_addTripCommand = new DelegateCommand(AddTripAsync));
@@ -51,25 +54,11 @@ namespace TravelExp.Prism.ViewModels
             set => SetProperty(ref _employee, value);
         }
 
-        /*private async void LoadTripsAsync()
+        private void LoadTripsAsync()
         {
             IsRunning = true;
-            string url = App.Current.Resources["UrlAPI"].ToString();
-            Response response = await _apiService.GetListAsync<TripResponse>(
-                url,
-                "/api",
-                "/Trips");
-            IsRunning = false;
-            if (!response.IsSuccess)
-            {
-                await App.Current.MainPage.DisplayAlert(
-                    "Error",
-                    response.Message,
-                    "Accept");
-                return;
-            }
-
-            List<TripResponse> list = (List<TripResponse>)response.Result;
+            EmployeeResponse userResponse = JsonConvert.DeserializeObject<EmployeeResponse>(Settings.User);
+            List<TripResponse> list = (List<TripResponse>)userResponse.Trips;
             Trips = list.Select(t => new TripItemViewModel(_navigationService)
             {
                 EndDate = t.EndDate,
@@ -79,30 +68,10 @@ namespace TravelExp.Prism.ViewModels
                 City = t.City,
                 TotalAmount = t.TotalAmount,
                 StartDate = t.StartDate
-            }).ToList();
-
-        }*/
-        public override void OnNavigatedTo(INavigationParameters parameters)
-        {
-            base.OnNavigatedTo(parameters);
-
-            if (parameters.ContainsKey("employee"))
-            {
-                _employee = parameters.GetValue<EmployeeResponse>("employee");
-                List<TripResponse> list = _employee.Trips;
-                Trips = list.Select(t => new TripItemViewModel(_navigationService)
-                {
-                    EndDate = t.EndDate,
-                    TripDetails = t.TripDetails,
-                    Id = t.Id,
-                    Employee = t.Employee,
-                    City = t.City,
-                    TotalAmount = t.TotalAmount,
-                    StartDate = t.StartDate
-                }).OrderByDescending(t => t.Id)
-                .ToList();
-            }
+            }).OrderByDescending(t => t.Id).ToList();
+            IsRunning = false;
         }
+        
     }
 
 }

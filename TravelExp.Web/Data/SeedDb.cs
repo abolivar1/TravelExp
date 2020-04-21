@@ -145,7 +145,6 @@ namespace TravelExp.Web.Data
             {
                 var startDate = DateTime.Today.AddMonths(2).ToUniversalTime();
                 var endDate = DateTime.Today.AddMonths(2).AddDays(4).ToUniversalTime();
-
                 _context.Trips.Add(new Trip
                 {
                     StartDate = startDate,
@@ -153,7 +152,8 @@ namespace TravelExp.Web.Data
                     Employee = _context.Users.FirstOrDefault(u => u.FirstName.Equals("Miguel")),
                     City = _context.Cities.FirstOrDefault(c => c.Name.Equals("Bogota")),
                     TotalAmount = 60000,
-                    TripDetails = new List<TripDetail>
+                    Description = "Viaje de negocios",
+                TripDetails = new List<TripDetail>
                     {
                         new TripDetail
                         {
@@ -185,6 +185,7 @@ namespace TravelExp.Web.Data
                     Employee = _context.Users.FirstOrDefault(u => u.FirstName.Equals("Miguel")),
                     City = _context.Cities.FirstOrDefault(c => c.Name.Equals("Miami")),
                     TotalAmount = 530000,
+                    Description = "Viaje de negocios",
                     TripDetails = new List<TripDetail>
                     {
                         new TripDetail

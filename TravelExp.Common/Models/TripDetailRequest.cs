@@ -15,7 +15,7 @@ namespace TravelExp.Common.Models
         [Required]
         public string Description { get; set; }
 
-        public string PicturePath { get; set; }
+        public byte[] PictureArray { get; set; }
 
         [Required]
         public int TripId { get; set; }

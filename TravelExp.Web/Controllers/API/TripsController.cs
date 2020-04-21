@@ -23,13 +23,16 @@ namespace TravelExp.Web.Controllers.API
     {
         private readonly DataContext _context;
         private readonly IConverterHelper _converterHelper;
+        private readonly IImageHelper _imageHelper;
 
         public TripsController(
             DataContext context,
-            IConverterHelper converterHelper)
+            IConverterHelper converterHelper,
+            IImageHelper imageHelper)
         {
             _context = context;
             _converterHelper = converterHelper;
+            _imageHelper = imageHelper;
         }
 
         [HttpGet]
@@ -96,15 +99,20 @@ namespace TravelExp.Web.Controllers.API
 
             CultureInfo cultureInfo = new CultureInfo(request.CultureInfo);
             Resource.Culture = cultureInfo;
-
+            string picturePath = string.Empty;
+            if (request.PictureArray != null && request.PictureArray.Length > 0)
+            {
+                picturePath = _imageHelper.UploadImage(request.PictureArray, "TripDetails");
+            }
+            
             var tripdetail = new TripDetail
             {
-                Date = request.Date,
+                Date = request.Date.ToUniversalTime(),
                 Amount = request.Amount,
                 Trip = _context.Trips.Find(request.TripId),
                 ExpenseType = _context.ExpenseTypes.Find(request.ExpenseTypeId),
                 Description = request.Description,
-                PicturePath = request.PicturePath
+                PicturePath = picturePath
             };
 
             await _context.TripDetails.AddAsync(tripdetail);

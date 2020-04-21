@@ -16,6 +16,15 @@ namespace TravelExp.Common.Services
 
         Task<bool> CheckConnectionAsync(string url);
 
+        Task<Response> ChangePasswordAsync(string urlBase, string servicePrefix, string controller, ChangePasswordRequest changePasswordRequest, string tokenType, string accessToken);
+
+        Task<Response> PutAsync<T>(string urlBase, string servicePrefix, string controller, T model, string tokenType, string accessToken);
+
+        Task<Response> RecoverPasswordAsync(string urlBase, string servicePrefix, string controller, EmailRequest emailRequest);
+
+        Task<Response> RegisterUserAsync(string urlBase, string servicePrefix, string controller, UserRequest userRequest);
+
+
         Task<Response> AddTripAsync(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, TripRequest request);
 
         Task<Response> AddTripDetailAsync(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, TripDetailRequest request);

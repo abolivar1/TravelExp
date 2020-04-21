@@ -10,6 +10,9 @@ using TravelExp.Common.Helpers;
 using TravelExp.Common.Models;
 using TravelExp.Common.Services;
 using TravelExp.Prism.Helpers;
+using Plugin.Media.Abstractions;
+using System;
+using Plugin.Media;
 
 namespace TravelExp.Prism.ViewModels
 {
@@ -17,30 +20,55 @@ namespace TravelExp.Prism.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
-        private ImageSource _image;
-        private ExpenseTypeResponse _expenseType;
-        private ObservableCollection<ExpenseTypeResponse> _expenseTypes;
+        private readonly IFilesHelper _filesHelper;
         private bool _isRunning;
         private bool _isEnabled;
+        private DateTime _date;
+        private TimeSpan _time;
+        private ObservableCollection<ExpenseTypeResponse> _expenseTypes;
+        private ImageSource _image;
+        private ExpenseTypeResponse _expenseType;
+        private MediaFile _file;
+        private TripDetailRequest _detail;
+        private TripResponse _trip;
+        private DelegateCommand _changeImageCommand;
         private DelegateCommand _AddTripDetailCommand;
-        public AddTripDetailPageViewModel(INavigationService navigationService,
-            IApiService apiService) : base(navigationService)
+        public AddTripDetailPageViewModel(
+            INavigationService navigationService,
+            IApiService apiService,
+            IFilesHelper filesHelper) : base(navigationService)
         {
             Title = "Add Trip Detail";
             _navigationService = navigationService;
             _apiService = apiService;
+            _filesHelper = filesHelper;
             IsEnabled = true;
             Image = App.Current.Resources["UrlNoImage"].ToString();
+            Detail = new TripDetailRequest();
+            Date = DateTime.Today;
             LoadExpenseTypesAsync();
         }
 
-        public DelegateCommand AddTripCommand => _AddTripDetailCommand ?? (_AddTripDetailCommand = new DelegateCommand(AddTripDetailAsync));
+        public DelegateCommand ChangeImageCommand => _changeImageCommand ?? (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
+
+        
+
+        public DelegateCommand AddTripDetailCommand => _AddTripDetailCommand ?? (_AddTripDetailCommand = new DelegateCommand(AddTripDetailAsync));
         public ExpenseTypeResponse ExpenseType
         {
             get => _expenseType;
             set => SetProperty(ref _expenseType, value);
         }
-
+        public TripDetailRequest Detail
+        {
+            get => _detail;
+            set => SetProperty(ref _detail, value);
+        }
+        public TripResponse Trip
+        {
+            get => _trip;
+            set => SetProperty(ref _trip, value);
+        }
         public ObservableCollection<ExpenseTypeResponse> ExpenseTypes
         {
             get => _expenseTypes;
@@ -64,10 +92,62 @@ namespace TravelExp.Prism.ViewModels
             get => _isEnabled;
             set => SetProperty(ref _isEnabled, value);
         }
+        public DateTime Date 
+        { 
+            get => _date; 
+            set => SetProperty(ref _date, value);
+        }
+        public TimeSpan Time 
+        { 
+            get => _time;
+            set => SetProperty(ref _time, value);
+        }
 
+        private async void ChangeImageAsync()
+        {
+            await CrossMedia.Current.Initialize();
+
+            string source = await Application.Current.MainPage.DisplayActionSheet(
+                "Select Source",
+                "Cancel",
+                null,
+                "From Gallery",
+                "From Camera");
+
+            if (source == "Cancel")
+            {
+                _file = null;
+                return;
+            }
+
+            if (source == "From Camera")
+            {
+                _file = await CrossMedia.Current.TakePhotoAsync(
+                    new StoreCameraMediaOptions
+                    {
+                        Directory = "Sample",
+                        Name = "test.jpg",
+                        PhotoSize = PhotoSize.Small,
+                    }
+                );
+            }
+            else
+            {
+                _file = await CrossMedia.Current.PickPhotoAsync();
+            }
+
+            if (_file != null)
+            {
+                Image = ImageSource.FromStream(() =>
+                {
+                    System.IO.Stream stream = _file.GetStream();
+                    return stream;
+                });
+            }
+        }
         private async void AddTripDetailAsync()
         {
-            /*bool isValid = await ValidateDataAsync();
+            bool isValid = await ValidateDataAsync();
             if (!isValid)
             {
                 return;
@@ -88,12 +168,20 @@ namespace TravelExp.Prism.ViewModels
             EmployeeResponse employee = JsonConvert.DeserializeObject<EmployeeResponse>(Settings.User);
 
             
-
-            User.TeamId = Team.Id;
-            User.PictureArray = imageArray;
-            User.CultureInfo = Languages.Culture;
-
-            Response response = await _apiService.RegisterUserAsync(url, "/api", "/Account", User);
+            if (_file == null)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must upload a picture of the expense", Languages.Accept);
+                return;
+            }
+            byte[] imageArray = null;
+            imageArray = _filesHelper.ReadFully(_file.GetStream());
+            Detail.ExpenseTypeId = ExpenseType.Id;
+            Detail.PictureArray = imageArray;
+            Detail.CultureInfo = Languages.Culture;
+            Detail.TripId = Trip.Id;
+            Detail.Date = Date + Time;
+            
+            Response response = await _apiService.AddTripDetailAsync(url, "/api", "/Trips/AddTripDetail", "bearer", token.Token, Detail);
             IsRunning = false;
             IsEnabled = true;
 
@@ -103,25 +191,8 @@ namespace TravelExp.Prism.ViewModels
                 return;
             }
 
-            await App.Current.MainPage.DisplayAlert(Languages.Ok, response.Message, Languages.Accept);
-            await _navigationService.GoBackAsync();
-
-            /*TripDetailRequest request = new TripDetailRequest
-            {
-                StartDate = SelectedRange.StartDate,
-                EndDate = SelectedRange.EndDate,
-                CityId = City.Id,
-                EmployeeId = employee.Id,
-                CultureInfo = Languages.Culture
-            };*/
-            //Response response = await _apiService.AddTripAsync(url, "api", "/Trips", "bearer", token.Token, request);
-            /*if (!response.IsSuccess)
-            {
-                await App.Current.MainPage.DisplayAlert("Error", "An error has ocurred saving the trip", Languages.Accept);
-                return;
-            }
-            IsRunning = false;
             await App.Current.MainPage.DisplayAlert("Ok", response.Message, Languages.Accept);
+
             EmailRequest request2 = new EmailRequest
             {
                 CultureInfo = Languages.Culture,
@@ -135,25 +206,41 @@ namespace TravelExp.Prism.ViewModels
             var parameters = new NavigationParameters
             {
                 { "token", token },
-                { "employee", userResponse }
+                { "employee", userResponse },
+                { "tripid", Trip.Id}
             };
-            await _navigationService.GoBackAsync(parameters);*/
+            await _navigationService.NavigateAsync("/TravelExpMasterDetailPage/NavigationPage/TripsPage/TripDetailsPage", parameters);
         }
 
         private async Task<bool> ValidateDataAsync()
         {
-            /*if (City == null)
+            if (ExpenseType == null)
              {
-                 await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select a city", Languages.Accept);
+                 await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select an Expense Type", Languages.Accept);
                  return false;
              }
 
-             if (SelectedRange == null)
+             if (Date == null)
              {
-                 await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select a date rage", Languages.Accept);
+                 await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select a date", Languages.Accept);
                  return false;
-             }*/
+             }
+            if (Time == null)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select a time", Languages.Accept);
+                return false;
+            }
+            if (Detail.Description == null)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must write a description", Languages.Accept);
+                return false;
+            }
 
+            if (Detail.Amount <= 0)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must enter the amount", Languages.Accept);
+                return false;
+            }
             return true;
         }
 
@@ -183,6 +270,17 @@ namespace TravelExp.Prism.ViewModels
 
             List<ExpenseTypeResponse> list = (List<ExpenseTypeResponse>)response.Result;
             ExpenseTypes = new ObservableCollection<ExpenseTypeResponse>(list.OrderBy(t => t.Name));
+        }
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+
+            if (parameters.ContainsKey("trip"))
+            {
+                _trip = parameters.GetValue<TripResponse>("trip");
+                Title = "Add expense of the trip to " + _trip.City.Name;
+            }
+
         }
     }
 }

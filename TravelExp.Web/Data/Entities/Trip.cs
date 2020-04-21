@@ -26,6 +26,11 @@ namespace TravelExp.Web.Data.Entities
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
         public DateTime EndDateLocal => EndDate.ToLocalTime();
 
+        [Required(ErrorMessage = "The field {0} is mandatory")]
+        [MaxLength(1000, ErrorMessage = "The field {0} can not be more than {1} characteres")]
+        [Display(Name = "Description")]
+        public string Description { get; set; }
+
         public Employee Employee { get; set; }
 
         public City City { get; set; }

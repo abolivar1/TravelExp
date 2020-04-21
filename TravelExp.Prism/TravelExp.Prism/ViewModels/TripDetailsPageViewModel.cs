@@ -10,7 +10,9 @@ namespace TravelExp.Prism.ViewModels
 {
     public class TripDetailsPageViewModel : ViewModelBase
     {
+        private int tripid;
         private TripResponse _trip;
+        private EmployeeResponse _employee;
         private List<TripDetailResponse> _tripDetails; 
         private DelegateCommand _addTripDetailCommand;
         private readonly INavigationService _navigationService;
@@ -25,12 +27,22 @@ namespace TravelExp.Prism.ViewModels
 
         private async void AddTripDetailAsync()
         {
-            await _navigationService.NavigateAsync("AddTripDetailPage");
+            NavigationParameters parameters = new NavigationParameters
+            {
+                { "trip", Trip }
+            };
+            await _navigationService.NavigateAsync("AddTripDetailPage", parameters);
         }
         public TripResponse Trip
         {
             get => _trip;
             set => SetProperty(ref _trip, value);
+        }
+
+        public EmployeeResponse Employee
+        {
+            get => _employee;
+            set => SetProperty(ref _employee, value);
         }
         public List<TripDetailResponse> TripDetails
         {
@@ -45,6 +57,25 @@ namespace TravelExp.Prism.ViewModels
             if (parameters.ContainsKey("trip"))
             {
                 _trip = parameters.GetValue<TripResponse>("trip");
+                Title = "Trip to " + _trip.City.Name;
+                TripDetails = _trip.TripDetails;
+            }
+
+            if (parameters.ContainsKey("employee"))
+            {
+                tripid = parameters.GetValue<int>("tripid");
+                _employee = parameters.GetValue<EmployeeResponse>("employee");
+                List<TripResponse> list = _employee.Trips;
+                Trip = list.Select(t => new TripResponse
+                {
+                    EndDate = t.EndDate,
+                    TripDetails = t.TripDetails,
+                    Id = t.Id,
+                    Employee = t.Employee,
+                    City = t.City,
+                    TotalAmount = t.TotalAmount,
+                    StartDate = t.StartDate
+                }).FirstOrDefault(t => t.Id == tripid);
                 Title = "Trip to " + _trip.City.Name;
                 TripDetails = _trip.TripDetails;
             }

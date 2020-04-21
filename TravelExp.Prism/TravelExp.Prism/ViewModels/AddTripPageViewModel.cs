@@ -104,8 +104,9 @@ namespace TravelExp.Prism.ViewModels
                 return;
             }
             IsRunning = false;
+            TravelExpMasterDetailPageViewModel.GetInstance().ReloadUser();
             await App.Current.MainPage.DisplayAlert("Ok", response.Message, Languages.Accept);
-            EmailRequest request2 = new EmailRequest
+            /*EmailRequest request2 = new EmailRequest
             {
                 CultureInfo = Languages.Culture,
                 Email = employee.Email
@@ -119,8 +120,8 @@ namespace TravelExp.Prism.ViewModels
             {
                 { "token", token },
                 { "employee", userResponse }
-            };
-            await _navigationService.GoBackAsync(parameters);
+            };*/
+            await _navigationService.NavigateAsync("/TravelExpMasterDetailPage/NavigationPage/TripsPage");
         }
 
         private async Task<bool> ValidateDataAsync()
