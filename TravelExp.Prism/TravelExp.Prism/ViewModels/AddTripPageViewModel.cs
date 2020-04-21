@@ -21,6 +21,7 @@ namespace TravelExp.Prism.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
         private CityResponse _city;
+        private string _description;
         private ObservableCollection<CityResponse> _cities;
         private bool _isRunning;
         private bool _isEnabled;
@@ -67,6 +68,11 @@ namespace TravelExp.Prism.ViewModels
             get => _isEnabled;
             set => SetProperty(ref _isEnabled, value);
         }
+        public string Description 
+        { 
+            get => _description;
+            set => SetProperty(ref _description, value);
+        }
 
         private async void AddTripAsync()
         {
@@ -91,6 +97,7 @@ namespace TravelExp.Prism.ViewModels
             EmployeeResponse employee = JsonConvert.DeserializeObject<EmployeeResponse>(Settings.User);
             TripRequest request = new TripRequest
             {
+                Description = Description,
                 StartDate = SelectedRange.StartDate,
                 EndDate = SelectedRange.EndDate,
                 CityId = City.Id,

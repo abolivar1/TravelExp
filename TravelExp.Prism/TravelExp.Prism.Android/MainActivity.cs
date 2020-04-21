@@ -23,8 +23,8 @@ namespace TravelExp.Prism.Droid
             Xamarin.Essentials.Platform.Init(this, bundle);
             CrossCurrentActivity.Current.Init(this, bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            new SfBusyIndicatorRenderer();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
+            new SfBusyIndicatorRenderer();
             LoadApplication(new App(new AndroidInitializer()));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)

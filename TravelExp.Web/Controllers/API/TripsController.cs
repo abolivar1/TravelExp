@@ -66,6 +66,7 @@ namespace TravelExp.Web.Controllers.API
 
             var trip = new Trip
             {
+                Description = request.Description,
                 StartDate = request.StartDate,
                 EndDate = request.EndDate,
                 Employee = _context.Users.Find(request.EmployeeId),

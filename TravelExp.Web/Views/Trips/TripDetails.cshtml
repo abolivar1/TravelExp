@@ -5,7 +5,7 @@
 }
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
-<h2>TripDetails</h2>
+<h2>@Html.DisplayFor(model => model.Description)</h2>
 <div>
     <a asp-action="Details" asp-route-id="@Model.Employee.Id" class="btn btn-success">Back to List</a>
 </div>

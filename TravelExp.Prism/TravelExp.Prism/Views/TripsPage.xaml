@@ -27,42 +27,62 @@
                             </Grid.GestureRecognizers>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <StackLayout Grid.Column="0"
-                                     VerticalOptions="Center">
-                                <Label Text="{Binding City.Name}" 
-                                   FontAttributes="Bold"
-                                   FontSize="Medium"
-                                   LineBreakMode="TailTruncation"/>
-                                <Label Text="Start Date"
-                                   LineBreakMode="TailTruncation"
-                                   FontAttributes="None" 
-                                   VerticalOptions="End" />
-                                <Label Text="End Date"
-                                   LineBreakMode="TailTruncation"
-                                   FontAttributes="None" 
-                                   VerticalOptions="End"/>
+                            <StackLayout Grid.Column="0">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <StackLayout Grid.Row="0">
+                                            <Label Text="{Binding Description}" 
+                                                    FontAttributes="Bold"
+                                                    FontSize="Medium"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Column="0">
+                                                    <Label Text="{Binding City.Name}" 
+                                                    FontAttributes="Bold"
+                                                    FontSize="Medium"
+                                                    LineBreakMode="TailTruncation"/>
+                                                <Label Text="Start Date"
+                                                    LineBreakMode="TailTruncation"
+                                                    FontAttributes="None" 
+                                                    VerticalOptions="End" />
+                                                <Label Text="End Date"
+                                                    LineBreakMode="TailTruncation"
+                                                    FontAttributes="None" 
+                                                    VerticalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="1"
+                                                     VerticalOptions="Center">
+                                            <Label Text="{Binding TotalAmount, StringFormat='{0:C2}'}" 
+                                                    FontAttributes="Bold"
+                                                    FontSize="Medium"
+                                                    LineBreakMode="TailTruncation"/>
+                                            <Label Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                                    LineBreakMode="TailTruncation"
+                                                    FontAttributes="None" 
+                                                    VerticalOptions="End"
+                                                    TextColor="White" />
+                                            <Label Text="{Binding EndDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                                    LineBreakMode="TailTruncation"
+                                                    FontAttributes="None" 
+                                                    VerticalOptions="End"/>
+                                        </StackLayout>
+                                    </Grid>
+                                             
+                                        </StackLayout>
+                                    </Grid>
                             </StackLayout>
-                            <StackLayout Grid.Column="1"
-                                     VerticalOptions="Center">
-                                <Label Text="{Binding TotalAmount, StringFormat='{0:C2}'}" 
-                                   FontAttributes="Bold"
-                                   FontSize="Medium"
-                                   LineBreakMode="TailTruncation"/>
-                                <Label Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
-                                   LineBreakMode="TailTruncation"
-                                   FontAttributes="None" 
-                                   VerticalOptions="End"
-                                       TextColor="White" />
-                                <Label Text="{Binding EndDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
-                                   LineBreakMode="TailTruncation"
-                                   FontAttributes="None" 
-                                   VerticalOptions="End"/>
-                            </StackLayout>
-                            <Image Grid.Column="2" 
-                               Source="ic_more_vert"/>
+                            <Image Grid.Column="1" 
+                                   Source="ic_more_vert"/>
                         </Grid>
                     </Frame>
                 </DataTemplate>
@@ -76,7 +96,7 @@
             WidthRequest      ="60"
             HeightRequest     ="60"
             CornerRadius      ="30"
-            VerticalOptions   ="Start"
+            VerticalOptions   ="End"
             HorizontalOptions="End"
             BorderWidth="5"
             BorderColor="{StaticResource ColorDanger}"

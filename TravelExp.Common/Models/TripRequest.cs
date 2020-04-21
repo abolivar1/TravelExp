@@ -19,6 +19,9 @@ namespace TravelExp.Common.Models
         public int CityId { get; set; }
 
         [Required]
+        public string Description { get; set; }
+
+        [Required]
         public string CultureInfo { get; set; }
     }
 }

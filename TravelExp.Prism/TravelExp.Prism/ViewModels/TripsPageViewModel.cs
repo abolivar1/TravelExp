@@ -61,6 +61,7 @@ namespace TravelExp.Prism.ViewModels
             List<TripResponse> list = (List<TripResponse>)userResponse.Trips;
             Trips = list.Select(t => new TripItemViewModel(_navigationService)
             {
+                Description = t.Description,
                 EndDate = t.EndDate,
                 TripDetails = t.TripDetails,
                 Id = t.Id,

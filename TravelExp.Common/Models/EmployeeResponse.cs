@@ -24,8 +24,8 @@ namespace TravelExp.Common.Models
         public string PicturePath { get; set; }
 
         public string LogoFullPath => string.IsNullOrEmpty(PicturePath)
-    ? "https://travelexpalex.azurewebsites.net//images/noimage.png"
-    : $"https://travelexpalex.azurewebsites.net{PicturePath.Substring(1)}";
+    ? "https://travelexpalex3.azurewebsites.net//images/noimage.png"
+    : $"https://travelexpalex3.azurewebsites.net{PicturePath.Substring(1)}";
 
         public List<TripResponse> Trips { get; set; }
 

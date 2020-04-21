@@ -21,27 +21,40 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0"
+                               Text="Description"
+                               FontAttributes="Bold"
+                               FontSize="Medium"
+                               VerticalOptions="Center"/>
+                        <Entry Grid.Row="1"
+                                BackgroundColor="{StaticResource ColorBackgroud}"
+                                PlaceholderColor="{StaticResource ColorSecondary}"
+                                Placeholder="Description"
+                                TextColor="{StaticResource ColorFont}"
+                                Text="{Binding Description}"/>
+                        <Label Grid.Row="2"
                                Text="City"
                                FontAttributes="Bold"
                                FontSize="Medium"
                                VerticalOptions="Center"/>
-                        <combobox:SfComboBox HeightRequest="40" x:Name="comboBox" Grid.Row="1" TextColor="White"
+                        <combobox:SfComboBox HeightRequest="40" x:Name="comboBox" Grid.Row="3" TextColor="White"
                                              IsEditableMode="true" AllowFiltering="true" SuggestionMode="Contains"
                                              DataSource="{Binding Cities}"
                                              DisplayMemberPath="Name"
                                              SelectedItem="{Binding City}">
                             
                         </combobox:SfComboBox>
-                        <Label Grid.Row="2"
+                        <Label Grid.Row="4"
                                Text="Date"
                                FontAttributes="Bold"
                                FontSize="Medium"
                                VerticalOptions="Center"/>
                         <syncfusion:SfCalendar x:Name="calendar" 
                                                SelectionMode="RangeSelection"
-                                               Grid.Row="3"
+                                               Grid.Row="5"
                                                SelectedRange ="{Binding SelectedRange, Mode=TwoWay}">
                             <syncfusion:SfCalendar.MonthViewSettings>
                                 <syncfusion:MonthViewSettings CurrentMonthBackgroundColor="Black"

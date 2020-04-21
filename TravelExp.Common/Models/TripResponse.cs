@@ -16,6 +16,8 @@ namespace TravelExp.Common.Models
 
         public DateTime EndDateLocal => EndDate.ToLocalTime();
 
+        public string Description { get; set; }
+
         public EmployeeResponse Employee { get; set; }
 
         public CityResponse City { get; set; }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TravelExp.Common.Models;
+using TravelExp.Prism.Helpers;
 
 namespace TravelExp.Prism.ViewModels
 {
@@ -50,7 +51,7 @@ namespace TravelExp.Prism.ViewModels
             set => SetProperty(ref _tripDetails, value);
         }
 
-        public override void OnNavigatedTo(INavigationParameters parameters)
+        public async override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
 
@@ -59,6 +60,8 @@ namespace TravelExp.Prism.ViewModels
                 _trip = parameters.GetValue<TripResponse>("trip");
                 Title = "Trip to " + _trip.City.Name;
                 TripDetails = _trip.TripDetails;
+                
+
             }
 
             if (parameters.ContainsKey("employee"))

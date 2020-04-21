@@ -65,6 +65,7 @@ namespace TravelExp.Web.Helpers
                 StartDate = tripEntities.StartDate,
                 EndDate = tripEntities.EndDate,
                 TotalAmount = tripEntities.TotalAmount,
+                Description = tripEntities.Description,
                 Employee = new EmployeeResponse
                 {
                     Id = tripEntities.Employee.Id,
