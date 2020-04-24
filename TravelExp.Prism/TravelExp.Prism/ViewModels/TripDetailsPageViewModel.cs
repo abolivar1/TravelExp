@@ -20,7 +20,7 @@ namespace TravelExp.Prism.ViewModels
 
         public TripDetailsPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "Trip Details";
+            Title = Languages.TripDetails;
             _navigationService = navigationService;
         }
 
@@ -58,9 +58,12 @@ namespace TravelExp.Prism.ViewModels
             if (parameters.ContainsKey("trip"))
             {
                 _trip = parameters.GetValue<TripResponse>("trip");
-                Title = "Trip to " + _trip.City.Name;
+                Title = Languages.TripTo +" "+ _trip.City.Name;
                 TripDetails = _trip.TripDetails;
-                
+                if (_tripDetails.Count <= 0)
+                {
+                    await App.Current.MainPage.DisplayAlert(Languages.Atention, Languages.NoExpenses, Languages.Accept);
+                }
 
             }
 

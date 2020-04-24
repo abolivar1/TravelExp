@@ -6,6 +6,7 @@ using System.Linq;
 using TravelExp.Common.Helpers;
 using TravelExp.Common.Models;
 using TravelExp.Common.Services;
+using TravelExp.Prism.Helpers;
 
 namespace TravelExp.Prism.ViewModels
 {
@@ -24,7 +25,7 @@ namespace TravelExp.Prism.ViewModels
         {
             _navigationService = navigationService;
             _apiService = apiService;
-            Title = "Trips";
+            Title = Languages.Trips;
             LoadTripsAsync();
         }
 
@@ -54,11 +55,11 @@ namespace TravelExp.Prism.ViewModels
             set => SetProperty(ref _employee, value);
         }
 
-        private void LoadTripsAsync()
+        private async void LoadTripsAsync()
         {
             IsRunning = true;
             EmployeeResponse userResponse = JsonConvert.DeserializeObject<EmployeeResponse>(Settings.User);
-            List<TripResponse> list = (List<TripResponse>)userResponse.Trips;
+            List<TripResponse> list = userResponse.Trips;
             Trips = list.Select(t => new TripItemViewModel(_navigationService)
             {
                 Description = t.Description,
@@ -70,6 +71,10 @@ namespace TravelExp.Prism.ViewModels
                 TotalAmount = t.TotalAmount,
                 StartDate = t.StartDate
             }).OrderByDescending(t => t.Id).ToList();
+            if (_trips.Count <= 0)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Atention, Languages.NoTrips, Languages.Accept);
+            }
             IsRunning = false;
         }
         

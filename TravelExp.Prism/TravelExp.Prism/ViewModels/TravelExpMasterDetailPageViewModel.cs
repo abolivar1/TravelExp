@@ -55,25 +55,25 @@ namespace TravelExp.Prism.ViewModels
                 {
                     Icon = "trips",
                     PageName = "TripsPage",
-                    Title = "Trips"
+                    Title = Languages.Trips
                 },
                 new Menu
                 {
                     Icon = "changepass",
                     PageName = "ChangePasswordPage",
-                    Title = "Change Password"
+                    Title = Languages.ChangePassword
                 },
                 new Menu
                 {
                     Icon = "user",
                     PageName = "ModifyUserPage",
-                    Title = "Modify User"
+                    Title = Languages.ModifyUser
                 },
                 new Menu
                 {
                     Icon = "logout",
                     PageName = "LoginPage",
-                    Title = "Logout"
+                    Title = Languages.Logout
                 }
             };
 

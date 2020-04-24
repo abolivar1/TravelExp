@@ -80,7 +80,7 @@ namespace TravelExp.Web.Controllers.API
             return Ok(new Response
             {
                 IsSuccess = true,
-                Message = "The trip has been created"
+                Message = Resource.TripCreated
             });
         }
 
@@ -124,7 +124,7 @@ namespace TravelExp.Web.Controllers.API
             return Ok(new Response
             {
                 IsSuccess = true,
-                Message = "The trip detail has been created"
+                Message = Resource.AddTripDetail
             });
         }
     }

@@ -28,7 +28,7 @@ namespace TravelExp.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiService;
             _regexHelper = regexHelper;
-            Title = "Recover Password";
+            Title = Languages.RecoverPassword;
             IsEnabled = true;
         }
 
@@ -77,7 +77,7 @@ namespace TravelExp.Prism.ViewModels
                 return;
             }
 
-            await App.Current.MainPage.DisplayAlert("Ok", response.Message, Languages.Accept);
+            await App.Current.MainPage.DisplayAlert(Languages.Ok, response.Message, Languages.Accept);
             await _navigationService.GoBackAsync();
         }
 

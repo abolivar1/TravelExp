@@ -39,7 +39,7 @@ namespace TravelExp.Prism.ViewModels
             _regexHelper = regexHelper;
             _apiService = apiService;
             _filesHelper = filesHelper;
-            Title = "Register";
+            Title = Languages.Register;
             Image = App.Current.Resources["UrlNoImage"].ToString();
             IsEnabled = true;
             User = new UserRequest();
@@ -108,11 +108,11 @@ namespace TravelExp.Prism.ViewModels
 
             if (!response.IsSuccess)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.UserExist, Languages.Accept);
                 return;
             }
 
-            await App.Current.MainPage.DisplayAlert("Ok", response.Message, Languages.Accept);
+            await App.Current.MainPage.DisplayAlert(Languages.Ok, response.Message, Languages.Accept);
             await _navigationService.GoBackAsync();
 
         }
@@ -121,25 +121,25 @@ namespace TravelExp.Prism.ViewModels
         {
             if (string.IsNullOrEmpty(User.Document))
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must enter a Document", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoDocument, Languages.Accept);
                 return false;
             }
 
             if (string.IsNullOrEmpty(User.FirstName))
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must enter a first name", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoFirstName, Languages.Accept);
                 return false;
             }
 
             if (string.IsNullOrEmpty(User.LastName))
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must enter a last name", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoLastName, Languages.Accept);
                 return false;
             }
 
             if (string.IsNullOrEmpty(User.Address))
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must enter an Address", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoAddress, Languages.Accept);
                 return false;
             }
 
@@ -157,13 +157,13 @@ namespace TravelExp.Prism.ViewModels
 
             if (string.IsNullOrEmpty(User.PasswordConfirm))
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must enter the confirm password", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoConfirmPassword, Languages.Accept);
                 return false;
             }
 
             if (User.Password != User.PasswordConfirm)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "Passwords don't match", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.PasswordsDontMatch, Languages.Accept);
                 return false;
             }
 
@@ -174,19 +174,19 @@ namespace TravelExp.Prism.ViewModels
             await CrossMedia.Current.Initialize();
 
             string source = await Application.Current.MainPage.DisplayActionSheet(
-                "Select Source",
-                "Cancel",
+                Languages.Source,
+                Languages.Cancel,
                 null,
-                "From Gallery",
-                "From Camera");
+                Languages.Gallery,
+                Languages.Camera);
 
-            if (source == "Cancel")
+            if (source == Languages.Cancel)
             {
                 _file = null;
                 return;
             }
 
-            if (source == "From Camera")
+            if (source == Languages.Camera)
             {
                 _file = await CrossMedia.Current.TakePhotoAsync(
                     new StoreCameraMediaOptions

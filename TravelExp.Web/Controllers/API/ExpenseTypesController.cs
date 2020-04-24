@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using TravelExp.Web.Data;
 using TravelExp.Web.Data.Entities;
 
@@ -30,25 +25,5 @@ namespace TravelExp.Web.Controllers.API
         {
             return _context.ExpenseTypes;
         }
-
-        /* GET: api/ExpenseTypes/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetExpenseType([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var expenseType = await _context.ExpenseTypes.FindAsync(id);
-
-            if (expenseType == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(expenseType);
-        }*/
-
     }
 }

@@ -33,7 +33,7 @@ namespace TravelExp.Prism.ViewModels
         {
             _navigationService = navigationService;
             _apiService = apiService;
-            Title = "Add Trip";
+            Title = Languages.AddTrip;
             IsEnabled = true;
             LoadCitiesAsync();
         }
@@ -107,27 +107,12 @@ namespace TravelExp.Prism.ViewModels
             Response response = await _apiService.AddTripAsync(url, "api", "/Trips", "bearer", token.Token, request);
             if (!response.IsSuccess)
             {
-                await App.Current.MainPage.DisplayAlert("Error", "An error has ocurred saving the trip", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
             IsRunning = false;
             TravelExpMasterDetailPageViewModel.GetInstance().ReloadUser();
-            await App.Current.MainPage.DisplayAlert("Ok", response.Message, Languages.Accept);
-            /*EmailRequest request2 = new EmailRequest
-            {
-                CultureInfo = Languages.Culture,
-                Email = employee.Email
-            };
-
-            Response response2 = await _apiService.GetUserByEmail(url, "api", "/Account/GetUserByEmail", "bearer", token.Token, request2);
-            EmployeeResponse userResponse = (EmployeeResponse)response2.Result;
-
-            Settings.User = JsonConvert.SerializeObject(userResponse);
-            var parameters = new NavigationParameters
-            {
-                { "token", token },
-                { "employee", userResponse }
-            };*/
+            await App.Current.MainPage.DisplayAlert(Languages.Ok, response.Message, Languages.Accept);
             await _navigationService.NavigateAsync("/TravelExpMasterDetailPage/NavigationPage/TripsPage");
         }
 
@@ -135,13 +120,19 @@ namespace TravelExp.Prism.ViewModels
         {
             if (City == null)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select a city", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoCity, Languages.Accept);
                 return false;
             }
 
             if (SelectedRange == null)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select a date rage", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoDates, Languages.Accept);
+                return false;
+            }
+
+            if (Description == null)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoDescription, Languages.Accept);
                 return false;
             }
 
@@ -168,7 +159,7 @@ namespace TravelExp.Prism.ViewModels
 
             if (!response.IsSuccess)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "An error has ocurred looking for data", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
 

@@ -121,222 +121,222 @@
     <value>Email</value>
   </data>
   <data name="EmailPlaceHolder" xml:space="preserve">
-    <value>Enter your email...</value>
+    <value>Por favor, digite seu endereço de e-mail…</value>
   </data>
   <data name="EmailError" xml:space="preserve">
-    <value>You must enter an email.</value>
+    <value>Você precisa inserir o seu endereço de email.</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value>Senha</value>
   </data>
   <data name="PasswordPlaceHolder" xml:space="preserve">
-    <value>Enter your password...</value>
+    <value>Digite sua senha</value>
   </data>
   <data name="PasswordError" xml:space="preserve">
-    <value>You must enter a password.</value>
+    <value>Insira uma senha.</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Register</value>
+    <value>Registrar</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Error</value>
+    <value>Erro</value>
   </data>
   <data name="ConnectionError" xml:space="preserve">
-    <value>Check the internet connection.</value>
+    <value>Verifique a ligação com a Internet.</value>
   </data>
   <data name="Accept" xml:space="preserve">
-    <value>Accept</value>
+    <value>Aceitar</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Login</value>
+    <value>Logon</value>
   </data>
   <data name="LoginError" xml:space="preserve">
-    <value>User or password incorrect</value>
+    <value>Usuário ou senha incorreta</value>
   </data>
   <data name="ForgotPassword" xml:space="preserve">
-    <value>Forgot your password?</value>
+    <value>Esqueceu sua senha?</value>
   </data>
   <data name="Loading" xml:space="preserve">
-    <value>Loading...</value>
+    <value>Carregando...</value>
   </data>
   <data name="Trips" xml:space="preserve">
-    <value>Trips</value>
+    <value>Viagens</value>
   </data>
   <data name="StartDate" xml:space="preserve">
-    <value>Start Date</value>
+    <value>Data de início</value>
   </data>
   <data name="EndDate" xml:space="preserve">
-    <value>End Date</value>
+    <value>Data de Término</value>
   </data>
   <data name="TripDetails" xml:space="preserve">
-    <value>Trip Details</value>
+    <value>Detalhes da Viagem</value>
   </data>
   <data name="NoExpenses" xml:space="preserve">
-    <value>There's no expenses for this trip yet</value>
+    <value>Ainda não há despesas para esta viagem</value>
   </data>
   <data name="Atention" xml:space="preserve">
-    <value>Atention</value>
+    <value>Atenção</value>
   </data>
   <data name="TripTo" xml:space="preserve">
-    <value>Trip to</value>
+    <value>Viagem ao</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Date</value>
+    <value>Data</value>
   </data>
   <data name="Amount" xml:space="preserve">
-    <value>Amount</value>
+    <value>Valor</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Descrição</value>
   </data>
   <data name="NoTrips" xml:space="preserve">
-    <value>You don't have trips yet</value>
+    <value>Você ainda não tem viagens!</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
-    <value>Change Password</value>
+    <value>Alterar Senha</value>
   </data>
   <data name="ModifyUser" xml:space="preserve">
-    <value>Modify User</value>
+    <value>Modificar usuário</value>
   </data>
   <data name="Logout" xml:space="preserve">
-    <value>Logout</value>
+    <value>Fazer logoff</value>
   </data>
   <data name="Document" xml:space="preserve">
-    <value>Document</value>
+    <value>Documento</value>
   </data>
   <data name="DocumentPlaceholder" xml:space="preserve">
-    <value>Enter your document</value>
+    <value>Digite seu documento</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>First Name</value>
+    <value>Nome</value>
   </data>
   <data name="FirstNamePlaceholder" xml:space="preserve">
-    <value>Enter your first name</value>
+    <value>Insira seu nome</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>Last Name</value>
+    <value>Sobrenome</value>
   </data>
   <data name="LastNamePlaceholder" xml:space="preserve">
-    <value>Enter your last name</value>
+    <value>Insira seu sobrenome</value>
   </data>
   <data name="Address" xml:space="preserve">
-    <value>Address</value>
+    <value>Endereço</value>
   </data>
   <data name="AddressPlaceholder" xml:space="preserve">
-    <value>Enter your address</value>
+    <value>Digite seu endereço</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="DataSaved" xml:space="preserve">
-    <value>Your data has been saved</value>
+    <value>Seus dados foram salvos.</value>
   </data>
   <data name="NoDocument" xml:space="preserve">
-    <value>You must enter a Document</value>
+    <value>Você deve inserir um Documento!</value>
   </data>
   <data name="NoFirstName" xml:space="preserve">
-    <value>You must enter a first name</value>
+    <value>Digite um nome</value>
   </data>
   <data name="NoLastName" xml:space="preserve">
-    <value>You must enter a last name</value>
+    <value>Digite um sobrenome</value>
   </data>
   <data name="NoAddress" xml:space="preserve">
-    <value>You must enter an Address</value>
-  </data>
-  <data name="Source" xml:space="preserve">
-    <value>Where do you want to get the picture?</value>
+    <value>Você deve digitar um endereço</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="Gallery" xml:space="preserve">
-    <value>From Gallery</value>
+    <value>Da Galeria</value>
   </data>
   <data name="Camera" xml:space="preserve">
-    <value>From Camera</value>
+    <value>Da Camera</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Onde você quer tirar a foto?!</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Salvar</value>
   </data>
   <data name="CurrentPassword" xml:space="preserve">
-    <value>Current Password</value>
+    <value>Senha atual</value>
   </data>
   <data name="CurrentPasswordPlaceholder" xml:space="preserve">
-    <value>Enter your current password</value>
+    <value>Insira sua senha atual</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value>New Password</value>
+    <value>Nova senha</value>
   </data>
   <data name="NewPasswordPlaceholder" xml:space="preserve">
-    <value>Enter your new password</value>
+    <value>Insira a Nova Senha</value>
   </data>
   <data name="ConfirmNewPassword" xml:space="preserve">
-    <value>Confirm Password</value>
+    <value>Confirmar Senha</value>
   </data>
   <data name="ConfirmNewPasswordPlaceholder" xml:space="preserve">
-    <value>Enter the confirmation for the new password</value>
+    <value>Digite a confirmação da nova senha</value>
   </data>
   <data name="NoCurrentPassword" xml:space="preserve">
-    <value>You must enter your current password</value>
+    <value>Você deve inserir sua senha atual</value>
   </data>
   <data name="NoNewPassword" xml:space="preserve">
-    <value>You must enter your new password</value>
+    <value>Você deve inserir sua nova senha</value>
   </data>
   <data name="NoConfirmPassword" xml:space="preserve">
-    <value>You must confirm your password</value>
+    <value>Você deve confirmar sua senha</value>
   </data>
   <data name="PasswordsDontMatch" xml:space="preserve">
-    <value>The passwords don't match</value>
+    <value>As senhas não correspondem</value>
   </data>
   <data name="AddTrip" xml:space="preserve">
-    <value>Add Trip</value>
+    <value>Adicionar viagem</value>
   </data>
   <data name="City" xml:space="preserve">
-    <value>City</value>
+    <value>Cidade</value>
   </data>
   <data name="NoCity" xml:space="preserve">
-    <value>You must select a city</value>
+    <value>Você deve escolher uma cidade!</value>
   </data>
   <data name="NoDates" xml:space="preserve">
-    <value>You must select a date rage</value>
+    <value>Você deve selecionar uma data da excursão</value>
   </data>
   <data name="NoDescription" xml:space="preserve">
-    <value>You must enter a description</value>
+    <value>É necessário inserir uma descrição</value>
   </data>
   <data name="DescriptionPlaceholder" xml:space="preserve">
-    <value>Enter a description</value>
+    <value>Insira uma descrição</value>
   </data>
   <data name="Time" xml:space="preserve">
-    <value>Time</value>
+    <value>Hora</value>
   </data>
   <data name="ExpenseType" xml:space="preserve">
-    <value>Expense Type</value>
+    <value>Tipo de Despesa</value>
   </data>
   <data name="AddExpense" xml:space="preserve">
-    <value>Add Expense</value>
+    <value>Adicionar despesa</value>
   </data>
   <data name="AddTripDetail" xml:space="preserve">
-    <value>Add expense of the trip to</value>
+    <value>Adicione as despesas da viagem para</value>
   </data>
   <data name="NoExpenseType" xml:space="preserve">
-    <value>You must select an Expense Type</value>
+    <value>Você deve selecionar um tipo de despesa</value>
   </data>
   <data name="NoDate" xml:space="preserve">
-    <value>You must select a date</value>
+    <value>Você deve selecionar uma data da excursão</value>
   </data>
   <data name="NoTime" xml:space="preserve">
-    <value>You must select a time</value>
+    <value>Você deve selecionar uma hora</value>
   </data>
   <data name="NoAmount" xml:space="preserve">
-    <value>You must enter the amount</value>
+    <value>Você deve digitar a quantia</value>
   </data>
   <data name="NoExpImage" xml:space="preserve">
-    <value>You must upload a picture of the expense</value>
+    <value>Você deve carregar uma foto da despesa</value>
   </data>
   <data name="RecoverPassword" xml:space="preserve">
-    <value>Recover Password</value>
+    <value>Recuperar Palavra-passe</value>
   </data>
   <data name="UserExist" xml:space="preserve">
-    <value>User already exist</value>
+    <value>Já existe</value>
   </data>
 </root>

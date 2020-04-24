@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:i18n="clr-namespace:TravelExp.Prism.Helpers"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TravelExp.Prism.Views.TripsPage"
@@ -51,11 +52,11 @@
                                                     FontAttributes="Bold"
                                                     FontSize="Medium"
                                                     LineBreakMode="TailTruncation"/>
-                                                <Label Text="Start Date"
+                                                <Label Text="{i18n:Translate StartDate}"
                                                     LineBreakMode="TailTruncation"
                                                     FontAttributes="None" 
                                                     VerticalOptions="End" />
-                                                <Label Text="End Date"
+                                                    <Label Text="{i18n:Translate EndDate}"
                                                     LineBreakMode="TailTruncation"
                                                     FontAttributes="None" 
                                                     VerticalOptions="End"/>

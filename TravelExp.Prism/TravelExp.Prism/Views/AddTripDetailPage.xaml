@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:i18n="clr-namespace:TravelExp.Prism.Helpers"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
@@ -45,38 +46,38 @@
 
                         <Label Grid.Row="0"
                                Grid.Column="0"
-                               Text="Date"
+                               Text="{i18n:Translate Date}"
                                VerticalOptions="Center"/>
                         <DatePicker Grid.Row="0"
                                Grid.Column="1"
-                               TextColor="White"
+                               TextColor="{StaticResource ColorFont}"
                                BackgroundColor="{StaticResource ColorSecondary}"
                                Date="{Binding Date, StringFormat='{0:yyyy/MM/dd}'}"/>
 
                         <Label Grid.Row="1"
                                Grid.Column="0"
-                               Text="Time"
+                               Text="{i18n:Translate Time}"
                                VerticalOptions="Center"/>
                         <TimePicker Grid.Row="1"
                                Grid.Column="1"
-                                    TextColor="White"
+                                    TextColor="{StaticResource ColorFont}"
                                BackgroundColor="{StaticResource ColorSecondary}"
                                Time ="{Binding Time}"/>
 
 
                         <Label Grid.Row="2"
                                Grid.Column="0"
-                               Text="Amount"
+                               Text="{i18n:Translate Amount}"
                                VerticalOptions="Center"/>
                         <Entry Grid.Row="2"
                                Grid.Column="1"
-                               Placeholder="Amount"
+                               Placeholder="{i18n:Translate Amount}"
                                Keyboard="Numeric"
                                Text="{Binding Detail.Amount}"/>
 
                         <Label Grid.Row="3"
                                Grid.Column="0"
-                               Text="Expense Type"
+                               Text="{i18n:Translate ExpenseType}"
                                VerticalOptions="Center"/>
                         <combobox:SfComboBox HeightRequest="40" x:Name="comboBox" Grid.Row="3" Grid.Column="1" TextColor="White"
                                              IsEditableMode="true" AllowFiltering="true" SuggestionMode="Contains"
@@ -84,13 +85,13 @@
                                              DisplayMemberPath="Name"
                                              SelectedItem="{Binding ExpenseType}"/>
                         <Label Grid.Row="4"
-                               Text="Description"
+                               Text="{i18n:Translate Description}"
                                VerticalOptions="Start"
                                Padding="0,15,0,0"/>
                         <Editor Grid.Row="4"
                                 Grid.Column="1"
-                               Placeholder="Description"
-                               TextColor="White"
+                               Placeholder="{i18n:Translate DescriptionPlaceholder}"
+                               TextColor="{StaticResource ColorFont}"
                                HeightRequest="150"
                                 PlaceholderColor="Gray"
                                Text="{Binding Detail.Description}"/>
@@ -100,7 +101,7 @@
             <Button Command="{Binding AddTripDetailCommand}"
                     IsEnabled="{Binding IsEnabled}"
                     VerticalOptions="EndAndExpand"
-                    Text="Add Expense"/>
+                    Text="{i18n:Translate AddExpense}"/>
         </StackLayout>
         <busyindicator:SfBusyIndicator AnimationType="Ball" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
@@ -109,7 +110,7 @@
                                        HorizontalOptions="Center"
                                        TextColor="{StaticResource ColorFont}"
                                        IsVisible="{Binding IsRunning}"
-                                       Title="Loading..."
+                                       Title="{i18n:Translate Loading}"
                                        VerticalOptions="Center"
                                        ViewBoxWidth="80"
                                        ViewBoxHeight="80" />

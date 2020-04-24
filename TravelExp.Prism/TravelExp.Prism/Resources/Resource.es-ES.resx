@@ -118,25 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Email" xml:space="preserve">
-    <value>Email</value>
+    <value>Correo electrónico</value>
   </data>
   <data name="EmailPlaceHolder" xml:space="preserve">
-    <value>Entra tu email...</value>
+    <value>Introduce tu correo electrónico</value>
   </data>
   <data name="EmailError" xml:space="preserve">
-    <value>Debes ingresar un correo electrónico...</value>
+    <value>Debes ingresar un correo electrónico.</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Contraseña</value>
   </data>
   <data name="PasswordPlaceHolder" xml:space="preserve">
-    <value>Entra tu contraseña...</value>
+    <value>Escriba la contraseña.</value>
   </data>
   <data name="PasswordError" xml:space="preserve">
-    <value>Debe escribir una contraseña.</value>
+    <value>Debe especificar una contraseña.</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Registrar</value>
+    <value>Registrarse</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
@@ -148,9 +148,195 @@
     <value>Aceptar</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Login</value>
+    <value>Iniciar sesión</value>
   </data>
   <data name="LoginError" xml:space="preserve">
-    <value>¡Usuario o Contraseña incorrecta!</value>
+    <value>El nombre de usuario o contraseña es incorrecto</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>¿Has olvidado la contraseña?</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Cargando...</value>
+  </data>
+  <data name="Trips" xml:space="preserve">
+    <value>Viajes</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Fecha de inicio</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Fecha de finalización</value>
+  </data>
+  <data name="TripDetails" xml:space="preserve">
+    <value>Detalles de viaje</value>
+  </data>
+  <data name="NoExpenses" xml:space="preserve">
+    <value>Aún no hay gastos para este viaje</value>
+  </data>
+  <data name="Atention" xml:space="preserve">
+    <value>Atención</value>
+  </data>
+  <data name="TripTo" xml:space="preserve">
+    <value>Viaje hacia</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Importe</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="NoTrips" xml:space="preserve">
+    <value>No tienes viajes</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Cambiar contraseña</value>
+  </data>
+  <data name="ModifyUser" xml:space="preserve">
+    <value>Modificar usuario</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="DocumentPlaceholder" xml:space="preserve">
+    <value>Ingrese su documento</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="FirstNamePlaceholder" xml:space="preserve">
+    <value>Escribe tu nombre</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Apellidos</value>
+  </data>
+  <data name="LastNamePlaceholder" xml:space="preserve">
+    <value>Escribe tu apellido</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="AddressPlaceholder" xml:space="preserve">
+    <value>Introduzca su dirección</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="DataSaved" xml:space="preserve">
+    <value>Se han guardado sus datos</value>
+  </data>
+  <data name="NoDocument" xml:space="preserve">
+    <value>Debes ingresar un número de documento</value>
+  </data>
+  <data name="NoFirstName" xml:space="preserve">
+    <value>Debes escribir un nombre</value>
+  </data>
+  <data name="NoLastName" xml:space="preserve">
+    <value>Debes escribir apellidos</value>
+  </data>
+  <data name="NoAddress" xml:space="preserve">
+    <value>Debe introducir una dirección</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>Desde la galería</value>
+  </data>
+  <data name="Camera" xml:space="preserve">
+    <value>Desde la cámara</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>¿De donde quieres obtener la foto?</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Contraseña actual</value>
+  </data>
+  <data name="CurrentPasswordPlaceholder" xml:space="preserve">
+    <value>Escriba la contraseña actual</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="NewPasswordPlaceholder" xml:space="preserve">
+    <value>Escriba su nueva contraseña</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirmar contraseña</value>
+  </data>
+  <data name="ConfirmNewPasswordPlaceholder" xml:space="preserve">
+    <value>Introduzca la confirmación de la nueva contraseña</value>
+  </data>
+  <data name="NoNewPassword" xml:space="preserve">
+    <value>Debe introducir su nueva contraseña</value>
+  </data>
+  <data name="NoConfirmPassword" xml:space="preserve">
+    <value>Debe confirmar la contraseña</value>
+  </data>
+  <data name="PasswordsDontMatch" xml:space="preserve">
+    <value>Las contraseñas no coinciden</value>
+  </data>
+  <data name="NoCurrentPassword" xml:space="preserve">
+    <value>Debe introducir su contraseña actual</value>
+  </data>
+  <data name="AddTrip" xml:space="preserve">
+    <value>Agregar viaje</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ciudad</value>
+  </data>
+  <data name="NoCity" xml:space="preserve">
+    <value>Debes seleccionar una ciudad</value>
+  </data>
+  <data name="NoDates" xml:space="preserve">
+    <value>Debe seleccionar un rango de fechas</value>
+  </data>
+  <data name="NoDescription" xml:space="preserve">
+    <value>Debe escribir una descripción</value>
+  </data>
+  <data name="DescriptionPlaceholder" xml:space="preserve">
+    <value>Escriba una descripción</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="ExpenseType" xml:space="preserve">
+    <value>Tipo de gasto</value>
+  </data>
+  <data name="AddExpense" xml:space="preserve">
+    <value>Agregar gasto</value>
+  </data>
+  <data name="AddTripDetail" xml:space="preserve">
+    <value>Añade los gastos del viaje a</value>
+  </data>
+  <data name="NoExpenseType" xml:space="preserve">
+    <value>Debe seleccionar un tipo de gasto</value>
+  </data>
+  <data name="NoDate" xml:space="preserve">
+    <value>Debe ingresar una fecha</value>
+  </data>
+  <data name="NoTime" xml:space="preserve">
+    <value>Debe seleccionar una hora</value>
+  </data>
+  <data name="NoAmount" xml:space="preserve">
+    <value>Debe intruducir el importe</value>
+  </data>
+  <data name="NoExpImage" xml:space="preserve">
+    <value>Debes subir una foto del gasto</value>
+  </data>
+  <data name="RecoverPassword" xml:space="preserve">
+    <value>Recuperar contraseña</value>
+  </data>
+  <data name="UserExist" xml:space="preserve">
+    <value>El usuario ya existe</value>
   </data>
 </root>

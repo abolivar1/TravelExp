@@ -27,7 +27,7 @@ namespace TravelExp.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiService;
             IsEnabled = true;
-            Title = "Change Password";
+            Title = Languages.ChangePassword;
         }
 
         public DelegateCommand ChangePasswordCommand => _changePasswordCommand ?? (_changePasswordCommand = new DelegateCommand(ChangePasswordAsync));
@@ -83,7 +83,7 @@ namespace TravelExp.Prism.ViewModels
                 return;
             }
 
-            await App.Current.MainPage.DisplayAlert("Ok", response.Message, Languages.Accept);
+            await App.Current.MainPage.DisplayAlert(Languages.Ok, response.Message, Languages.Accept);
 
         }
 
@@ -91,25 +91,25 @@ namespace TravelExp.Prism.ViewModels
         {
             if (string.IsNullOrEmpty(CurrentPassword))
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must enter your current password", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoCurrentPassword, Languages.Accept);
                 return false;
             }
 
             if (string.IsNullOrEmpty(NewPassword) || NewPassword?.Length < 6)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must enter your new password", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoNewPassword, Languages.Accept);
                 return false;
             }
 
             if (string.IsNullOrEmpty(PasswordConfirm))
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must confirm you new password", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoConfirmPassword, Languages.Accept);
                 return false;
             }
 
             if (NewPassword != PasswordConfirm)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "The passwords don't match", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.PasswordsDontMatch, Languages.Accept);
                 return false;
             }
 

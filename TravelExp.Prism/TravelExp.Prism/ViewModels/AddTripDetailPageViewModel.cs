@@ -38,7 +38,6 @@ namespace TravelExp.Prism.ViewModels
             IApiService apiService,
             IFilesHelper filesHelper) : base(navigationService)
         {
-            Title = "Add Trip Detail";
             _navigationService = navigationService;
             _apiService = apiService;
             _filesHelper = filesHelper;
@@ -108,19 +107,19 @@ namespace TravelExp.Prism.ViewModels
             await CrossMedia.Current.Initialize();
 
             string source = await Application.Current.MainPage.DisplayActionSheet(
-                "Select Source",
-                "Cancel",
+                Languages.Source,
+                Languages.Cancel,
                 null,
-                "From Gallery",
-                "From Camera");
+                Languages.Gallery,
+                Languages.Camera);
 
-            if (source == "Cancel")
+            if (source == Languages.Cancel)
             {
                 _file = null;
                 return;
             }
 
-            if (source == "From Camera")
+            if (source == Languages.Camera)
             {
                 _file = await CrossMedia.Current.TakePhotoAsync(
                     new StoreCameraMediaOptions
@@ -170,7 +169,7 @@ namespace TravelExp.Prism.ViewModels
             
             if (_file == null)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must upload a picture of the expense", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoExpImage, Languages.Accept);
                 return;
             }
             byte[] imageArray = null;
@@ -191,7 +190,7 @@ namespace TravelExp.Prism.ViewModels
                 return;
             }
 
-            await App.Current.MainPage.DisplayAlert("Ok", response.Message, Languages.Accept);
+            await App.Current.MainPage.DisplayAlert(Languages.Ok, response.Message, Languages.Accept);
 
             EmailRequest request2 = new EmailRequest
             {
@@ -216,29 +215,29 @@ namespace TravelExp.Prism.ViewModels
         {
             if (ExpenseType == null)
              {
-                 await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select an Expense Type", Languages.Accept);
+                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoExpenseType, Languages.Accept);
                  return false;
              }
 
              if (Date == null)
              {
-                 await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select a date", Languages.Accept);
+                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoDate, Languages.Accept);
                  return false;
              }
             if (Time == null)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must select a time", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoTime, Languages.Accept);
                 return false;
             }
             if (Detail.Description == null)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must write a description", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoDescription, Languages.Accept);
                 return false;
             }
 
             if (Detail.Amount <= 0)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "You must enter the amount", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoAmount, Languages.Accept);
                 return false;
             }
             return true;
@@ -264,7 +263,7 @@ namespace TravelExp.Prism.ViewModels
 
             if (!response.IsSuccess)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "An error has ocurred looking for data", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
 
@@ -278,7 +277,7 @@ namespace TravelExp.Prism.ViewModels
             if (parameters.ContainsKey("trip"))
             {
                 _trip = parameters.GetValue<TripResponse>("trip");
-                Title = "Add expense of the trip to " + _trip.City.Name;
+                Title = Languages.AddTripDetail + " " + _trip.City.Name;
             }
 
         }

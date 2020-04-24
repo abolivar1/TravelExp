@@ -61,6 +61,15 @@ namespace TravelExp.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The expense has beed added.
+        /// </summary>
+        public static string AddTripDetail {
+            get {
+                return ResourceManager.GetString("AddTripDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Email.
         /// </summary>
         public static string ConfirmEmail {
@@ -106,7 +115,7 @@ namespace TravelExp.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Recover Password.
+        ///   Looks up a localized string similar to Recover Password.
         /// </summary>
         public static string RecoverPassword {
             get {
@@ -129,6 +138,15 @@ namespace TravelExp.Web.Resources {
         public static string RecoverPasswordSubject {
             get {
                 return ResourceManager.GetString("RecoverPasswordSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The trip has been created.
+        /// </summary>
+        public static string TripCreated {
+            get {
+                return ResourceManager.GetString("TripCreated", resourceCulture);
             }
         }
         

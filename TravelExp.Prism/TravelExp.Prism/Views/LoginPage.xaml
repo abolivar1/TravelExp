@@ -25,34 +25,34 @@
                     <Label Grid.Column="0" 
                        Grid.Row="0"
                        HorizontalTextAlignment="End"
-                       Text="Email"
+                       Text="{i18n:Translate Email}"
                        VerticalOptions="Center"/>
                     <Entry Grid.Column="1"
                        Grid.Row="0"
                        BackgroundColor="{StaticResource ColorBackgroud}"
                        PlaceholderColor="{StaticResource ColorSecondary}"
                        Keyboard="Email"
-                       Placeholder="Enter Your Email"
+                       Placeholder="{i18n:Translate EmailPlaceHolder}"
                        TextColor="{StaticResource ColorFont}"
                        Text="{Binding Email}"/>
                     <Label Grid.Column="0" 
                        Grid.Row="1"
                        HorizontalTextAlignment="End"
-                       Text="Password"
+                       Text="{i18n:Translate Password}"
                        VerticalOptions="Center"/>
                     <Entry Grid.Column="1"
                        Grid.Row="1"
                        BackgroundColor="{StaticResource ColorBackgroud}"
                        PlaceholderColor="{StaticResource ColorSecondary}"
                        IsPassword="True"
-                       Placeholder="Enter your password"
+                       Placeholder="{i18n:Translate PasswordPlaceHolder}"
                        TextColor="{StaticResource ColorFont}"
                        Text="{Binding Password}"/>
                 </Grid>
                 <Label FontAttributes="Bold"
                        TextDecorations="Underline"
                     HorizontalOptions="Center" 
-                    Text="Forgot your password?"
+                    Text="{i18n:Translate ForgotPassword}"
                     TextColor="{StaticResource ColorFont}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
@@ -64,10 +64,10 @@
             <StackLayout>
                 <Button Command="{Binding LoginCommand}" 
                         IsEnabled="{Binding IsEnabled}"
-                        Text="Login"/>
+                        Text="{i18n:Translate Login}"/>
                 <Button Command="{Binding RegisterCommand}" 
                         IsEnabled="{Binding IsEnabled}"
-                        Text="Register"
+                        Text="{i18n:Translate Register}"
                         Style="{StaticResource DangerButton}"/>
             </StackLayout>
         </StackLayout>
@@ -78,7 +78,7 @@
                                        HorizontalOptions="Center"
                                        TextColor="{StaticResource ColorFont}"
                                        IsVisible="{Binding IsRunning}"
-                                       Title="Loading..."
+                                       Title="{i18n:Translate Loading}"
                                        VerticalOptions="Center"
                                        ViewBoxWidth="80"
                                        ViewBoxHeight="80" />

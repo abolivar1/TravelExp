@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:i18n="clr-namespace:TravelExp.Prism.Helpers"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TravelExp.Prism.Views.TripDetailsPage"
@@ -56,11 +57,11 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <StackLayout Grid.Column="0">
-                                            <Label Text="Date: "
+                                            <Label Text="{i18n:Translate Date}"
                                                 LineBreakMode="TailTruncation"
                                                 FontAttributes="Bold" 
                                                 VerticalOptions="End"/>
-                                            <Label Text="Amount: " 
+                                            <Label Text="{i18n:Translate Amount}" 
                                                 FontAttributes="Bold"
                                                 LineBreakMode="TailTruncation"/>
                                         </StackLayout>
@@ -77,7 +78,7 @@
                                     </Grid>
                                 </StackLayout>
                                 <StackLayout Grid.Row="3">
-                                    <Label Text="Description:"
+                                    <Label Text="{i18n:Translate Description}"
                                    FontAttributes="Bold"
                                    VerticalOptions="EndAndExpand"/>
                                     <Label Text="{Binding Description}"

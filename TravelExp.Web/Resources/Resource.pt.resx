@@ -118,45 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="UserAlreadyExists" xml:space="preserve">
-    <value>User already exists.</value>
+    <value>O usuário já existe.</value>
   </data>
   <data name="ConfirmEmail" xml:space="preserve">
-    <value>Confirm Email</value>
+    <value>Confirmar email</value>
   </data>
   <data name="ConfirmEmailSubject" xml:space="preserve">
-    <value>To allow the user, please click on this link:</value>
+    <value>Para permitir ao usuário, clique neste link :!</value>
   </data>
   <data name="ConfirmEmailMessage" xml:space="preserve">
-    <value>A Confirmation email was sent. Please confirm your account and log into the App.</value>
+    <value>Um email de confirmação foi enviado. Por favor, confirme sua conta e faça o login na App.!</value>
   </data>
   <data name="UserDoesntExists" xml:space="preserve">
-    <value>User doesn't exists.</value>
+    <value>O usuário não existe</value>
   </data>
   <data name="RecoverPassword" xml:space="preserve">
-    <value>Recover Password</value>
+    <value>Recuperar Palavra-passe</value>
   </data>
   <data name="RecoverPasswordSubject" xml:space="preserve">
-    <value>To reset the password click in this link:</value>
+    <value>Para redefinir a senha, clique neste link :!</value>
   </data>
   <data name="RecoverPasswordMessage" xml:space="preserve">
-    <value>An email with instructions to change the password was sent.</value>
+    <value>Um email com instruções para alterar a senha foi enviado.</value>
   </data>
   <data name="IncorrectCurrentPassword" xml:space="preserve">
-    <value>Incorrect current password.</value>
+    <value>Senha atual incorreta</value>
   </data>
   <data name="PasswordChangedSuccess" xml:space="preserve">
-    <value>The password was changed successfully!</value>
+    <value>Senha alterada com sucesso</value>
   </data>
   <data name="TripDoesntExists" xml:space="preserve">
-    <value>Trip doesn't exists.</value>
+    <value>A viagem não existe.!</value>
   </data>
   <data name="TripDetailDoesntExists" xml:space="preserve">
-    <value>Trip Detail doesn't exists.</value>
+    <value>O detalhe da viagem não existe.!</value>
   </data>
   <data name="TripCreated" xml:space="preserve">
-    <value>The trip has been created</value>
+    <value>A viagem foi criada</value>
   </data>
   <data name="AddTripDetail" xml:space="preserve">
-    <value>The expense has beed added</value>
+    <value>A despesa foi adicionada</value>
   </data>
 </root>

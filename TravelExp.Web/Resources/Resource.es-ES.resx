@@ -153,4 +153,10 @@
   <data name="TripDetailDoesntExists" xml:space="preserve">
     <value>El detalle de viaje no existe.</value>
   </data>
+  <data name="TripCreated" xml:space="preserve">
+    <value>El viaje ha sido creado</value>
+  </data>
+  <data name="AddTripDetail" xml:space="preserve">
+    <value>El gasto se ha añadido</value>
+  </data>
 </root>

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:i18n="clr-namespace:TravelExp.Prism.Helpers"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TravelExp.Prism.Views.AddTripPage"
@@ -25,18 +26,18 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0"
-                               Text="Description"
+                               Text="{i18n:Translate Description}"
                                FontAttributes="Bold"
                                FontSize="Medium"
                                VerticalOptions="Center"/>
                         <Entry Grid.Row="1"
                                 BackgroundColor="{StaticResource ColorBackgroud}"
                                 PlaceholderColor="{StaticResource ColorSecondary}"
-                                Placeholder="Description"
+                                Placeholder="{i18n:Translate DescriptionPlaceholder}"
                                 TextColor="{StaticResource ColorFont}"
                                 Text="{Binding Description}"/>
                         <Label Grid.Row="2"
-                               Text="City"
+                               Text="{i18n:Translate City}"
                                FontAttributes="Bold"
                                FontSize="Medium"
                                VerticalOptions="Center"/>
@@ -48,7 +49,7 @@
                             
                         </combobox:SfComboBox>
                         <Label Grid.Row="4"
-                               Text="Date"
+                               Text="{i18n:Translate Date}"
                                FontAttributes="Bold"
                                FontSize="Medium"
                                VerticalOptions="Center"/>
@@ -83,7 +84,7 @@
             <Button Command="{Binding AddTripCommand}"
                     IsEnabled="{Binding IsEnabled}"
                     VerticalOptions="EndAndExpand"
-                    Text="Add"/>
+                    Text="{i18n:Translate AddTrip}"/>
         </StackLayout>
         <busyindicator:SfBusyIndicator AnimationType="Ball" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
@@ -92,7 +93,7 @@
                                        HorizontalOptions="Center"
                                        TextColor="{StaticResource ColorFont}"
                                        IsVisible="{Binding IsRunning}"
-                                       Title="Loading..."
+                                       Title="{i18n:Translate Loading}"
                                        VerticalOptions="Center"
                                        ViewBoxWidth="80"
                                        ViewBoxHeight="80" />
